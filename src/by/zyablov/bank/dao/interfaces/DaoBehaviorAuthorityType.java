@@ -1,7 +1,27 @@
 package by.zyablov.bank.dao.interfaces;
 
-import by.zyablov.bank.beans.Entity;
+import by.zyablov.bank.beans.AuthorityType;
+import by.zyablov.bank.exceptions.DaoException;
 
-public interface DaoBehaviorAuthorityType<T extends Entity> extends DaoBehavior<T> {
-	
+/**
+ * Interface {@code DaoBehaviorAuthorityType} declares methods to work with
+ * {@code AuthorityType} objects from a datasource.
+ * 
+ * @author Дмитрий
+ * @see AuthorityType
+ */
+public interface DaoBehaviorAuthorityType {
+
+	/**
+	 * Get an {@code AuthorityType} object from a datasource.
+	 * 
+	 * @param bankAccount
+	 *            An {@code AuthorityType} object to get
+	 * 
+	 * @return An {@code AuthorityType} object from a datasource
+	 * 
+	 * @throws DaoException
+	 */
+	AuthorityType getAuthorityType(AuthorityType authorityType) throws DaoException;
+
 }

@@ -22,7 +22,7 @@ public interface DaoBehaviorUser {
 	 * @param user
 	 *            An {@code User} object to get
 	 * 
-	 * @return An {@code User} object from a datasource.
+	 * @return An {@code User} object from a datasource
 	 * 
 	 * @throws DaoException
 	 */
@@ -47,15 +47,5 @@ public interface DaoBehaviorUser {
 	 * @throws DaoException
 	 */
 	void updateUser(User user) throws DaoException;
-
-	/**
-	 * Remove an {@code User} object from the datasource.
-	 * 
-	 * @param user
-	 *            An {@code User} object to remove
-	 * 
-	 * @throws DaoException
-	 */
-	void delete(User user) throws DaoException;
 
 }

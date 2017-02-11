@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Clas {@code BankAccount} storages a personal bank information of the client:
- * {@code CreditCard} objects, bank account working state.
+ * data about credit cards, bank account working state.
  * 
  * 
  * @author Дмитрий

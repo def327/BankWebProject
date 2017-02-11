@@ -1,1 +1,5 @@
 
+INFO - Hello world!
+ [main] ERROR logger.WebAppLogger - Error
+INFO - Hello world!
+ [main] ERROR logger.WebAppLogger - Error
