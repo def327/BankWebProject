@@ -41,7 +41,7 @@ public interface DaoBehaviorUser {
 	/**
 	 * Update an {@code User} object at the datasource.
 	 * 
-	 * @param user
+	 * @param userProfile
 	 *            An {@code User} object to update
 	 * 
 	 * @throws DaoException

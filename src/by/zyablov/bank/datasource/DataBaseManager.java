@@ -143,7 +143,6 @@ public class DataBaseManager implements DataSourceBehavior {
 	/**
 	 * Shutdown a connection pool.
 	 */
-	@Override
 	public void closeDataSource() {
 		this.dataSource.close();
 	}

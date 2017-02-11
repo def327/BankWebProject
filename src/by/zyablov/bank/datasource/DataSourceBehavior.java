@@ -31,9 +31,4 @@ public interface DataSourceBehavior {
 	 */
 	void closeConnection(Connection connection) throws SQLException;
 
-	/**
-	 * Closes a data source
-	 */
-	void closeDataSource();
-
 }

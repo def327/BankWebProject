@@ -18,5 +18,5 @@ public interface ManagerSQLBehavior {
 	 * @return A SQL request
 	 */
 	String getPreparedSqlRequest(String requestName);
-
+	
 }

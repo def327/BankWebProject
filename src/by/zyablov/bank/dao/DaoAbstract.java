@@ -27,7 +27,7 @@ public abstract class DaoAbstract {
 
 	/**
 	 * Constructs a default <code>DaoAbstract</code> with an initialized
-	 * datasource and sql-request manager.
+	 * datasource and SQL-request manager.
 	 */
 	public DaoAbstract() {
 		this.dataSource = DataBaseManager.getInstance();

@@ -1,12 +1,7 @@
 package by.zyablov.bank.tests;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
-import by.zyablov.bank.datasource.DataBaseManager;
-import by.zyablov.bank.datasource.DataSourceBehavior;
+import by.zyablov.bank.datasource.tools.ManagerSQL;
 
 public class BankWebAppRunner {
 
@@ -22,27 +17,29 @@ public class BankWebAppRunner {
 //		config.setPassword("10041995Dima");
 
 //		HikariDataSource dataSource = new HikariDataSource(config);
+//		
+//		DataSourceBehavior dataSource = DataBaseManager.getInstance();
+//
+//		Connection c = dataSource.getConnection();
+//
+//		Statement st = c.createStatement();
+//
+//		ResultSet res = st.executeQuery("SELECT `first_name` FROM `clients`");
+//
+//		while (res.next()) {
+//			System.out.println(res.getString(1));
+//		}
+//		
+//		
+//
+//		res.close();
+//		st.close();
+//		
+//		dataSource.closeConnection(c);
+//		
+//		DataBaseManager.getInstance().closeDataSource();
 		
-		DataSourceBehavior dataSource = DataBaseManager.getInstance();
-
-		Connection c = dataSource.getConnection();
-
-		Statement st = c.createStatement();
-
-		ResultSet res = st.executeQuery("SELECT `first_name` FROM `clients`");
-
-		while (res.next()) {
-			System.out.println(res.getString(1));
-		}
-		
-		
-
-		res.close();
-		st.close();
-		
-		dataSource.closeConnection(c);
-		
-		dataSource.closeDataSource();
+		System.out.println(ManagerSQL.getInstance().getPreparedSqlRequest("SQL_GET_USER"));
 		
 	
 
