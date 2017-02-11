@@ -23,5 +23,5 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/WebBankProject/WebContent/WEB-INF/lib/HikariCP_Lib/HikariCP-java7-2.4.11-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="output" path="build/classes"/>
+	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

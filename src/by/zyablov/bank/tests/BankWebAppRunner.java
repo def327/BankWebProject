@@ -5,10 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javax.servlet.http.HttpServletRequest;
-
-import by.zyablov.bank.commands.CommandBehavior;
-import by.zyablov.bank.commands.factory.CommandFactory;
 import by.zyablov.bank.dbmanager.DataBaseManager;
 import by.zyablov.bank.dbmanager.DataSourceBehavior;
 
