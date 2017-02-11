@@ -1,12 +1,61 @@
-/**
- * 
- */
+
 package by.zyablov.bank.dao.interfaces;
 
+import by.zyablov.bank.beans.User;
+import by.zyablov.bank.exceptions.DaoException;
+
 /**
+ * Interface {@code DaoBehaviorUser} declares methods to work with {@code User}
+ * objects from a datasource.
+ * 
+ * 
  * @author Дмитрий
+ * @see User
  *
  */
-public interface DaoBehaviorUser extends DaoBehavior {
+public interface DaoBehaviorUser {
+
+	/**
+	 * Get an {@code User} object from a datasource.
+	 * 
+	 * 
+	 * @param user
+	 *            An {@code User} object to get
+	 * 
+	 * @return An {@code User} object from a datasource.
+	 * 
+	 * @throws DaoException
+	 */
+	User getUser(User user) throws DaoException;
+
+	/**
+	 * Add an {@code User} object to a datasource.
+	 * 
+	 * @param user
+	 *            An {@code User} object to add
+	 * 
+	 * @throws DaoException
+	 */
+	void addNewUser(User user) throws DaoException;
+
+	/**
+	 * Update an {@code User} object at the datasource.
+	 * 
+	 * @param user
+	 *            An {@code User} object to update
+	 * 
+	 * @throws DaoException
+	 */
+	void updateUser(User user) throws DaoException;
+
+	/**
+	 * Remove an {@code User} object from the datasource.
+	 * 
+	 * @param user
+	 *            An {@code User} object to remove
+	 * 
+	 * @throws DaoException
+	 */
+	void delete(User user) throws DaoException;
 
 }

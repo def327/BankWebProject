@@ -11,6 +11,13 @@ package by.zyablov.bank.beans;
  */
 public class User extends Entity {
 
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4025542135365903606L;
+
 	/**
 	 * A unique login for a user to authorize in a bank.
 	 */

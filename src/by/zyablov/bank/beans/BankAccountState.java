@@ -12,6 +12,10 @@ package by.zyablov.bank.beans;
 public class BankAccountState extends Entity {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3465635915905101167L;
+	/**
 	 * A working state status title of a {@code BankAccount} object.
 	 */
 	private String stateTypeTittle;

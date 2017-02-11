@@ -15,6 +15,11 @@ import java.util.List;
 public class BankAccount extends Entity {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9055818037370851914L;
+
+	/**
 	 * A list of {@code CreditCard} objects with credit cards information data.
 	 */
 	private List<CreditCard> listOfCreditCards;

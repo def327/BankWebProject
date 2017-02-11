@@ -17,6 +17,10 @@ package by.zyablov.bank.beans;
 public class UserProfileClient extends UserProfile {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3739354623753957319L;
+	/**
 	 * Storages a personal bank data information of the client.
 	 */
 	private BankAccount bankAccount;

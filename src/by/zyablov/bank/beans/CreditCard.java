@@ -13,6 +13,11 @@ package by.zyablov.bank.beans;
 public class CreditCard extends Entity {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2866230038578315409L;
+
+	/**
 	 * A unique number, which consists of a unique combination of characters and
 	 * digitsю
 	 */

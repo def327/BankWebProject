@@ -13,6 +13,11 @@ package by.zyablov.bank.beans;
 public abstract class UserProfile extends Entity {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1843129991218926585L;
+
+	/**
 	 * A user's name.
 	 */
 	private String firstName;

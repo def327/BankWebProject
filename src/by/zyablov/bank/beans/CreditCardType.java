@@ -11,6 +11,10 @@ package by.zyablov.bank.beans;
 public class CreditCardType extends Entity {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1368947361985575049L;
+	/**
 	 * An credit card type title.
 	 */
 	private String cardTypeTitle;
