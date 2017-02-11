@@ -4,7 +4,7 @@ import by.zyablov.bank.beans.AuthorityType;
 import by.zyablov.bank.exceptions.DaoException;
 
 /**
- * Interface {@code DaoBehaviorAuthorityType} declares methods to work with
+ * Interface {@code DaoBehaviorAuthorityType} defines methods to work with
  * {@code AuthorityType} objects from a datasource.
  * 
  * @author Дмитрий

@@ -5,8 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import by.zyablov.bank.dbmanager.DataBaseManager;
-import by.zyablov.bank.dbmanager.DataSourceBehavior;
+import by.zyablov.bank.datasource.DataBaseManager;
+import by.zyablov.bank.datasource.DataSourceBehavior;
 
 public class BankWebAppRunner {
 

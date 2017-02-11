@@ -10,7 +10,7 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
-import by.zyablov.bank.dbmanager.DataBaseManager;
+import by.zyablov.bank.datasource.DataBaseManager;
 
 /**
  * Class {@code ConfigParser} has methods to parse a xml file with a

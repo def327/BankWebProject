@@ -4,7 +4,7 @@ import by.zyablov.bank.beans.CreditCardType;
 import by.zyablov.bank.exceptions.DaoException;
 
 /**
- * Interface {@code DaoBehaviorCreditCardType} declares methods to work with
+ * Interface {@code DaoBehaviorCreditCardType} defines methods to work with
  * {@code CreditCardType} objects from a datasource.
  * 
  * @author Дмитрий

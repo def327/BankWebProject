@@ -5,7 +5,7 @@ import by.zyablov.bank.beans.User;
 import by.zyablov.bank.exceptions.DaoException;
 
 /**
- * Interface {@code DaoBehaviorUser} declares methods to work with {@code User}
+ * Interface {@code DaoBehaviorUser} defines methods to work with {@code User}
  * objects from a datasource.
  * 
  * 
