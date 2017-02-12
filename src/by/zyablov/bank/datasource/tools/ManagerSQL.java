@@ -15,18 +15,12 @@ public class ManagerSQL implements ManagerSQLBehavior {
 	 * A name of propertie file with prepared SQL requests.
 	 */
 	private static final String BUNDLE_NAME = "sql_requests";
+	
+	// AuthorityType DAO
+	public static final String SQL_GET_AUTHORITY_TYPE = "SQL_GET_AUTHORITY_TYPE";
+	
+	
 
-	// #LOGIN DAO
-	public static final String SQL_GET_USER = "SQL_GET_USER";
-	public static final String SQL_GET_USER_BY_UID = "SQL_GET_USER_BY_UID";
-
-	// #ADMINISTRATOR DAO
-	public static final String SQL_ADD_FILM = "SQL_ADD_FILM";
-	public static final String SQL_SET_ORDER_STATUS = "SQL_SET_ORDER_STATUS";
-	public static final String SQL_DELETE_FILM = "SQL_DELETE_FILM";
-	public static final String SQL_UPDATE_ORDER_STATUS = "SQL_UPDATE_ORDER_STATUS";
-	public static final String SQL_GET_ALL_USERS = "SQL_GET_ALL_USERS";
-	public static final String SQL_SET_ACCESS_LEVEL = "SQL_SET_ACCESS_LEVEL";
 
 	/**
 	 * An instance of {@code ManagerSQL} object.
@@ -43,7 +37,7 @@ public class ManagerSQL implements ManagerSQLBehavior {
 	 * 
 	 * @return A {@code ManagerSQL} object.
 	 */
-	public static ManagerSQLBehavior getInstance() {
+	public static ManagerSQL getInstance() {
 
 		ManagerSQL localInstance = managerSql;
 

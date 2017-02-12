@@ -93,18 +93,14 @@ public class DataBaseManager implements DataSourceBehavior {
 
 	/**
 	 * Return's a proxy connection to database.
+	 * 
+	 * <p><i>
+	 * When you call method {@link Connection#close() close()} - a proxy
+	 * connection returns to connection pool.</i>
 	 */
 	@Override
 	public Connection getConnection() throws SQLException {
 		return this.dataSource.getConnection();
-	}
-
-	/**
-	 * Return's a proxy connetion to connection pool.
-	 */
-	@Override
-	public void closeConnection(Connection connection) throws SQLException {
-		connection.close();
 	}
 
 	/**
@@ -131,6 +127,13 @@ public class DataBaseManager implements DataSourceBehavior {
 	}
 
 	/**
+	 * Shutdown a connection pool.
+	 */
+	public void closeDataSource() {
+		this.dataSource.close();
+	}
+
+	/**
 	 * Constructs and initializes by {@code ConfigParser} a
 	 * {@code DataBaseManager} object.
 	 * 
@@ -138,13 +141,6 @@ public class DataBaseManager implements DataSourceBehavior {
 	 */
 	private DataBaseManager() {
 		this.dataSource = new HikariDataSource((HikariConfig) initDataSourceConfig());
-	}
-
-	/**
-	 * Shutdown a connection pool.
-	 */
-	public void closeDataSource() {
-		this.dataSource.close();
 	}
 
 }
