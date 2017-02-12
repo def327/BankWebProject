@@ -19,6 +19,13 @@ public class ManagerSQL implements ManagerSQLBehavior {
 	// AuthorityType DAO
 	public static final String SQL_GET_AUTHORITY_TYPE = "SQL_GET_AUTHORITY_TYPE";
 	
+	// User DAO
+	public static final String SQL_GET_USER = "SQL_GET_USER";
+	public static final String SQL_ADD_NEW_USER = "SQL_ADD_NEW_USER";
+
+	// UserProfile DAO 
+	public static final String SQL_GET_USER_PROFILE = "SQL_GET_USER_PROFILE";
+	public static final String SQL_ADD_NEW_USER_PROFILE = "SQL_ADD_NEW_USER_PROFILE";
 	
 
 

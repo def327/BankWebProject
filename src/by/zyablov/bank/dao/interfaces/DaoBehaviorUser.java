@@ -26,7 +26,7 @@ public interface DaoBehaviorUser {
 	 * 
 	 * @throws DaoException
 	 */
-	User getUserByLogin(User user) throws DaoException;
+	User getUserByLogin(String userLogin) throws DaoException;
 
 	/**
 	 * Add an {@code User} object to a datasource.
@@ -36,16 +36,7 @@ public interface DaoBehaviorUser {
 	 * 
 	 * @throws DaoException
 	 */
-	void addNewUser(User user) throws DaoException;
+	void addNewUserClient(User user) throws DaoException;
 
-	/**
-	 * Update an {@code User} object at the datasource.
-	 * 
-	 * @param userProfile
-	 *            An {@code User} object to update
-	 * 
-	 * @throws DaoException
-	 */
-	void updateUser(User user) throws DaoException;
 
 }

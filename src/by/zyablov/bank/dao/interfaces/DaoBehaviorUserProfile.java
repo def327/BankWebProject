@@ -35,7 +35,7 @@ public interface DaoBehaviorUserProfile {
 	 * 
 	 * @throws DaoException
 	 */
-	void addNewUserProfile(UserProfile userProfile) throws DaoException;
+	void addNewUserProfile(User user) throws DaoException;
 
 
 

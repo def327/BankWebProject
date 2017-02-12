@@ -7,7 +7,7 @@ import java.util.HashMap;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-import by.zyablov.bank.xml.ConfigParser;
+import by.zyablov.bank.xml.DataBaseMangerConfigParser;
 
 /**
  * Class {@code DataBaseManager} provides methods to work with connections to
@@ -24,7 +24,7 @@ import by.zyablov.bank.xml.ConfigParser;
  * 
  * @author Дмитрий
  * 
- * @see ConfigParser
+ * @see DataBaseMangerConfigParser
  *
  */
 public class DataBaseManager implements DataSourceBehavior {
@@ -112,8 +112,8 @@ public class DataBaseManager implements DataSourceBehavior {
 	 */
 	private HikariConfig initDataSourceConfig() throws NumberFormatException {
 
-		ConfigParser configParser = new ConfigParser(PATH_TO_XML_FILE);
-		HashMap<String, String> configProperties = configParser.getProperties();
+		DataBaseMangerConfigParser dataBaseMangerConfigParser = new DataBaseMangerConfigParser(PATH_TO_XML_FILE);
+		HashMap<String, String> configProperties = dataBaseMangerConfigParser.getProperties();
 
 		HikariConfig config = new HikariConfig();
 
@@ -137,7 +137,7 @@ public class DataBaseManager implements DataSourceBehavior {
 	 * Constructs and initializes by {@code ConfigParser} a
 	 * {@code DataBaseManager} object.
 	 * 
-	 * @see ConfigParser
+	 * @see DataBaseMangerConfigParser
 	 */
 	private DataBaseManager() {
 		this.dataSource = new HikariDataSource((HikariConfig) initDataSourceConfig());

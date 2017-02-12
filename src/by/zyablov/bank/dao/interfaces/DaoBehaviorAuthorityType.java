@@ -22,6 +22,6 @@ public interface DaoBehaviorAuthorityType {
 	 * 
 	 * @throws DaoException
 	 */
-	AuthorityType getAuthorityTypeById(AuthorityType authorityType) throws DaoException;
+	AuthorityType getAuthorityTypeById(int authorityTypeUniqueId) throws DaoException;
 
 }

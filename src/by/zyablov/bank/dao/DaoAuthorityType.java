@@ -21,22 +21,29 @@ import by.zyablov.bank.exceptions.DaoException;
 public class DaoAuthorityType extends DaoAbstract implements DaoBehaviorAuthorityType {
 
 	/**
-	 * Field index of an unique ID for {@code AuthorityType} object from
-	 * database.
+	 * A position of unique ID of an {@code AuthorityType} object in prepared
+	 * SQL request.
+	 */
+	private static final int QUERY_POSITION_ID_AUTHORITY_TYPE = 1;
+
+	/**
+	 * Database field index of an unique ID for an {@code AuthorityType} object
+	 * from database.
 	 */
 	private static final int ID_AUTHORITY_TYPE = 1;
 
 	/**
-	 * Field index of a title name for {@code AuthorityType} object from
-	 * database.
+	 * Database field indexof a title name for an {@code AuthorityType} object
+	 * from database.
 	 */
 	private static final int TYPE_TITLE = 2;
 
 	/**
-	 * Return's an {@code AuthorityType} object from a database by its unique ID.
+	 * Return's an {@code AuthorityType} object from a database by its unique
+	 * ID.
 	 */
 	@Override
-	public AuthorityType getAuthorityTypeById(AuthorityType authorityType) throws DaoException {
+	public AuthorityType getAuthorityTypeById(int authorityTypeUniqueId) throws DaoException {
 
 		AuthorityType authorityTypeObjectFromDataBase = null;
 
@@ -51,13 +58,25 @@ public class DaoAuthorityType extends DaoAbstract implements DaoBehaviorAuthorit
 			preparedStatement = connectionToDataBase
 					.prepareStatement(super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_GET_AUTHORITY_TYPE));
 
-			preparedStatement.setInt(ID_AUTHORITY_TYPE, authorityType.getId());
+			preparedStatement.setInt(QUERY_POSITION_ID_AUTHORITY_TYPE, authorityTypeUniqueId);
 			result = preparedStatement.executeQuery();
 
 			authorityTypeObjectFromDataBase = new AuthorityType();
 
 			while (result.next()) {
 				authorityTypeObjectFromDataBase.setAuthorityTypeTitle(result.getString(TYPE_TITLE));
+			}
+
+			if (result.next()) {
+
+				authorityTypeObjectFromDataBase = new AuthorityType();
+
+				do {
+
+					authorityTypeObjectFromDataBase.setId(result.getInt(ID_AUTHORITY_TYPE));
+					authorityTypeObjectFromDataBase.setAuthorityTypeTitle(result.getString(TYPE_TITLE));
+
+				} while (result.next());
 			}
 
 		} catch (SQLException e) {
