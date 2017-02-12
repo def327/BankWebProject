@@ -15,19 +15,31 @@ public class ManagerSQL implements ManagerSQLBehavior {
 	 * A name of propertie file with prepared SQL requests.
 	 */
 	private static final String BUNDLE_NAME = "sql_requests";
-	
+
 	// AuthorityType DAO
 	public static final String SQL_GET_AUTHORITY_TYPE = "SQL_GET_AUTHORITY_TYPE";
-	
+
 	// User DAO
 	public static final String SQL_GET_USER = "SQL_GET_USER";
 	public static final String SQL_ADD_NEW_USER = "SQL_ADD_NEW_USER";
 
-	// UserProfile DAO 
+	// UserProfile DAO
 	public static final String SQL_GET_USER_PROFILE = "SQL_GET_USER_PROFILE";
 	public static final String SQL_ADD_NEW_USER_PROFILE = "SQL_ADD_NEW_USER_PROFILE";
-	
 
+	// CreditCardType DAO
+	public static final String SQL_GET_CREDIT_CARD_TYPE = "SQL_GET_CREDIT_CARD_TYPE";
+	public static final String SQL_GET_LIST_CREDIT_CARD_TYPE = "SQL_GET_LIST_CREDIT_CARD_TYPE";
+
+	// BankAccount DAO
+	public static final String SQL_GET_BANK_ACCOUNT = "SQL_GET_BANK_ACCOUNT";
+	public static final String SQL_ADD_NEW_BANK_ACCOUNT = "SQL_ADD_NEW_BANK_ACCOUNT";
+	public static final String SQL_UPDATE_BANK_ACCOUNT_CURRENT_BALANCE = "SQL_UPDATE_BANK_ACCOUNT_CURRENT_BALANCE";
+	public static final String SQL_UPDATE_BANK_ACCOUNT_ID_BANK_ACCOUNT_STATE = "SQL_UPDATE_BANK_ACCOUNT_ID_BANK_ACCOUNT_STATE";
+
+	// BankAccountState DAO
+	public static final String SQL_GET_BANK_ACCOUNT_STATE = "SQL_GET_BANK_ACCOUNT_STATE";
+	public static final String SQL_GET_LIST_BANK_ACCOUNT_STATE = "SQL_GET_LIST_BANK_ACCOUNT_STATE";
 
 	/**
 	 * An instance of {@code ManagerSQL} object.

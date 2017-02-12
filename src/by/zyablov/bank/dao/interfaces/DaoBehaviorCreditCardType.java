@@ -1,5 +1,7 @@
 package by.zyablov.bank.dao.interfaces;
 
+import java.util.List;
+
 import by.zyablov.bank.beans.CreditCardType;
 import by.zyablov.bank.exceptions.DaoException;
 
@@ -22,6 +24,8 @@ public interface DaoBehaviorCreditCardType {
 	 * 
 	 * @throws DaoException
 	 */
-	CreditCardType getCreditCardType(CreditCardType creditCardType) throws DaoException;
+	CreditCardType getCreditCardType(int creditCardTypeId) throws DaoException;
+	
+	List<CreditCardType> getListOfCreditCardTypes() throws DaoException;
 
 }

@@ -36,7 +36,7 @@ public class DaoUserProfile extends DaoAbstract implements DaoBehaviorUserProfil
 	 * the {@code User} object.
 	 */
 	@Override
-	public UserProfile getUserProfile(User user) throws DaoException {
+	public UserProfile getUserProfile(int userId) throws DaoException {
 
 		UserProfile userProfileObjectFromDataBase = null;
 
@@ -51,7 +51,7 @@ public class DaoUserProfile extends DaoAbstract implements DaoBehaviorUserProfil
 			preparedStatement = connectionToDataBase
 					.prepareStatement(super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_GET_USER_PROFILE));
 
-			preparedStatement.setInt(QUERY_POSITION_ID_USER, user.getId());
+			preparedStatement.setInt(QUERY_POSITION_ID_USER, userId);
 			result = preparedStatement.executeQuery();
 
 			if (result.next()) {

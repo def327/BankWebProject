@@ -160,14 +160,6 @@ public class DaoUser extends DaoAbstract implements DaoBehaviorUser {
 			preparedStatement = connectionToDataBase
 					.prepareStatement(super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_ADD_NEW_USER));
 
-			System.out.println(ManagerSQL.SQL_ADD_NEW_USER);
-			System.out.println("--");
-			System.out.println(super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_ADD_NEW_USER));
-
-			System.out.println("--");
-			System.out.println("login : " + user.getLogin());
-			System.out.println("password : " + user.getPassword());
-
 			preparedStatement.setString(QUERY_POSITION_LOGIN, user.getLogin());
 			preparedStatement.setString(QUERY_POSITION_PASSWORD, user.getPassword());
 			preparedStatement.setInt(QUERY_POSITION_ID_AUTHORITY_TYPE, user.getAuthorityType().getId());

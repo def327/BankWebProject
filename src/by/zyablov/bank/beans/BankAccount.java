@@ -25,10 +25,15 @@ public class BankAccount extends Entity {
 	private List<CreditCard> listOfCreditCards;
 
 	/**
-	 * A status type of banck account state.
+	 * A status type of bank account state.
 	 */
 	private BankAccountState bankAccountState;
 
+	/**
+	 * A current balance of the bank account. 
+	 */
+	private int currentBalance;
+	
 	/**
 	 * Constructs a default <code>BankAccount</code>.
 	 */
@@ -81,6 +86,20 @@ public class BankAccount extends Entity {
 	 */
 	public void setBankAccountState(BankAccountState bankAccountState) {
 		this.bankAccountState = bankAccountState;
+	}
+
+	/**
+	 * @return the currentBalance
+	 */
+	public int getCurrentBalance() {
+		return currentBalance;
+	}
+
+	/**
+	 * @param currentBalance the currentBalance to set
+	 */
+	public void setCurrentBalance(int currentBalance) {
+		this.currentBalance = currentBalance;
 	}
 
 }

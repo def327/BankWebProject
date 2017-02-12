@@ -25,7 +25,7 @@ public interface DaoBehaviorUserProfile {
 	 * 
 	 * @throws DaoException
 	 */
-	UserProfile getUserProfile(User user) throws DaoException;
+	UserProfile getUserProfile(int userId) throws DaoException;
 
 	/**
 	 * Adds an {@code UserProfile} object to a datasource.

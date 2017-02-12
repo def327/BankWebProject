@@ -23,7 +23,7 @@ public interface DaoBehaviorBankAccount {
 	 * 
 	 * @throws DaoException
 	 */
-	BankAccount getBankAccountById(BankAccount bankAccount) throws DaoException;
+	BankAccount getBankAccountById(int bankAccountId) throws DaoException;
 
 	/**
 	 * Adds an {@code BankAccount} object to a datasource.
@@ -42,6 +42,12 @@ public interface DaoBehaviorBankAccount {
 	 * 
 	 * @throws DaoException
 	 */
-	void updateBankAccountCurrentBalance(BankAccount bankAccount) throws DaoException;
+	void updateBankAccountCurrentBalance(int bankAccountId, int newBalance) throws DaoException;
+	
+	/**
+	 * 
+	 * @throws DaoException
+	 */
+	void updateBankAccountStateId(int bankAccountId, int bankAccountStateId) throws DaoException;
 
 }
