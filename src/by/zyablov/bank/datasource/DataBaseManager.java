@@ -129,7 +129,7 @@ public class DataBaseManager implements DataSourceBehavior {
 	/**
 	 * Shutdown a connection pool.
 	 */
-	public void closeDataSource() {
+	public void closeDataBaseManager() {
 		this.dataSource.close();
 	}
 

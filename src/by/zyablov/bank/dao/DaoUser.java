@@ -9,21 +9,22 @@ import by.zyablov.bank.exceptions.DaoException;
  * Class {@code DaoUser} provides methods to work with {@code User} objects.
  * 
  * @author Дмитрий
+ * 
  * @see User
  */
 public class DaoUser extends DaoAbstract implements DaoBehaviorUser {
 
 	/**
-	 * Return's an {@code User} object.
+	 * Return's an {@code User} object by unique login.
 	 */
 	@Override
-	public User getUser(User user) throws DaoException {
+	public User getUserByLogin(User user) throws DaoException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	/**
-	 * Add a new {@code User} object to database.
+	 * Adds a new {@code User} object to a database.
 	 */
 	@Override
 	public void addNewUser(User user) throws DaoException {
@@ -32,7 +33,7 @@ public class DaoUser extends DaoAbstract implements DaoBehaviorUser {
 	}
 
 	/**
-	 * Update fields of {@code User} object at the database.
+	 * Updates fields of {@code User} object at the database.
 	 */
 	@Override
 	public void updateUser(User user) throws DaoException {

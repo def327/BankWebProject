@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import by.zyablov.bank.beans.AuthorityType;
 import by.zyablov.bank.dao.interfaces.DaoBehaviorAuthorityType;
 import by.zyablov.bank.datasource.DataBaseManager;
-import by.zyablov.bank.datasource.DataSourceBehavior;
 import by.zyablov.bank.datasource.tools.ManagerSQL;
 import by.zyablov.bank.exceptions.DaoException;
 
@@ -34,22 +33,23 @@ public class DaoAuthorityType extends DaoAbstract implements DaoBehaviorAuthorit
 	private static final int TYPE_TITLE = 2;
 
 	/**
-	 * Return's an {@code AuthorityType} object from database.
+	 * Return's an {@code AuthorityType} object from a database by its unique ID.
 	 */
 	@Override
-	public AuthorityType getAuthorityType(AuthorityType authorityType) throws DaoException {
+	public AuthorityType getAuthorityTypeById(AuthorityType authorityType) throws DaoException {
 
 		AuthorityType authorityTypeObjectFromDataBase = null;
-		DataSourceBehavior datasource = null;
+
 		Connection connectionToDataBase = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet result = null;
 
 		try {
-			datasource = DataBaseManager.getInstance();
-			connectionToDataBase = datasource.getConnection();
 
-			preparedStatement = connectionToDataBase.prepareStatement(ManagerSQL.SQL_GET_AUTHORITY_TYPE);
+			connectionToDataBase = super.dataSource.getConnection();
+
+			preparedStatement = connectionToDataBase
+					.prepareStatement(super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_GET_AUTHORITY_TYPE));
 
 			preparedStatement.setInt(ID_AUTHORITY_TYPE, authorityType.getId());
 			result = preparedStatement.executeQuery();
@@ -64,7 +64,7 @@ public class DaoAuthorityType extends DaoAbstract implements DaoBehaviorAuthorit
 
 			// Logging
 
-			DataBaseManager.getInstance().closeDataSource();
+			DataBaseManager.getInstance().closeDataBaseManager();
 			ManagerSQL.getInstance().closeManagerSql();
 
 			throw new DaoException();
@@ -79,7 +79,6 @@ public class DaoAuthorityType extends DaoAbstract implements DaoBehaviorAuthorit
 				} catch (SQLException ignore) {
 
 					// Logging
-
 				}
 
 			if (preparedStatement != null)

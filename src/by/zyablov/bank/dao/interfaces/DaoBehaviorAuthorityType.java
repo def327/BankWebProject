@@ -13,7 +13,7 @@ import by.zyablov.bank.exceptions.DaoException;
 public interface DaoBehaviorAuthorityType {
 
 	/**
-	 * Get an {@code AuthorityType} object from a datasource.
+	 * Return's an {@code AuthorityType} object from a datasource.
 	 * 
 	 * @param bankAccount
 	 *            An {@code AuthorityType} object to get
@@ -22,6 +22,6 @@ public interface DaoBehaviorAuthorityType {
 	 * 
 	 * @throws DaoException
 	 */
-	AuthorityType getAuthorityType(AuthorityType authorityType) throws DaoException;
+	AuthorityType getAuthorityTypeById(AuthorityType authorityType) throws DaoException;
 
 }

@@ -16,7 +16,7 @@ import by.zyablov.bank.exceptions.DaoException;
 public interface DaoBehaviorUser {
 
 	/**
-	 * Get an {@code User} object from a datasource.
+	 * Return's a {@code User} object from a datasource.
 	 * 
 	 * 
 	 * @param user
@@ -26,7 +26,7 @@ public interface DaoBehaviorUser {
 	 * 
 	 * @throws DaoException
 	 */
-	User getUser(User user) throws DaoException;
+	User getUserByLogin(User user) throws DaoException;
 
 	/**
 	 * Add an {@code User} object to a datasource.

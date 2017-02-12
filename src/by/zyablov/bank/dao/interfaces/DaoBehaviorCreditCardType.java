@@ -13,12 +13,12 @@ import by.zyablov.bank.exceptions.DaoException;
 public interface DaoBehaviorCreditCardType {
 
 	/**
-	 * Get an {@code CreditCardType} object from a datasource.
+	 * Return's a {@code CreditCardType} object from a datasource.
 	 * 
 	 * @param creditCardType
 	 *            An {@code CreditCardType} object to get
 	 *            
-	 * @return An {@code CreditCardType} object from a datasource
+	 * @return A {@code CreditCardType} object from a datasource
 	 * 
 	 * @throws DaoException
 	 */

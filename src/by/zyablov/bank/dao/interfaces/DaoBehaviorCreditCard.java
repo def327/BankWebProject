@@ -1,5 +1,7 @@
 package by.zyablov.bank.dao.interfaces;
 
+import java.util.List;
+
 import by.zyablov.bank.beans.CreditCard;
 import by.zyablov.bank.exceptions.DaoException;
 
@@ -14,19 +16,19 @@ import by.zyablov.bank.exceptions.DaoException;
 public interface DaoBehaviorCreditCard {
 
 	/**
-	 * Get an {@code CreditCard} object from a datasource.
+	 * Return's a list of {@code CreditCard} objects from a datasource.
 	 * 
 	 * @param creditCard
 	 *            An {@code CreditCard} object to get
 	 * 
-	 * @return An {@code CreditCard} object from a datasource
+	 * @return A list of {@code CreditCard} objects from a datasource
 	 * 
 	 * @throws DaoException
 	 */
-	CreditCard getCreditCard(CreditCard creditCard) throws DaoException;
+	List<CreditCard> getCreditCard(CreditCard creditCard) throws DaoException;
 
 	/**
-	 * Add an {@code CreditCard} object to a datasource.
+	 * Adds a {@code CreditCard} object to a datasource.
 	 * 
 	 * @param creditCard
 	 *            An {@code CreditCard} object to add

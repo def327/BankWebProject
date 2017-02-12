@@ -14,7 +14,7 @@ import by.zyablov.bank.exceptions.DaoException;
 public interface DaoBehaviorBankAccount {
 
 	/**
-	 * Get an {@code BankAccount} object from a datasource.
+	 * Return's an {@code BankAccount} object from a datasource.
 	 * 
 	 * @param bankAccount
 	 *            An {@code BankAccount} object to get
@@ -23,10 +23,10 @@ public interface DaoBehaviorBankAccount {
 	 * 
 	 * @throws DaoException
 	 */
-	BankAccount getBankAccount(BankAccount bankAccount) throws DaoException;
+	BankAccount getBankAccountById(BankAccount bankAccount) throws DaoException;
 
 	/**
-	 * Add an {@code BankAccount} object to a datasource.
+	 * Adds an {@code BankAccount} object to a datasource.
 	 * 
 	 * @param bankAccount
 	 *            An {@code BankAccount} object to add
@@ -35,13 +35,13 @@ public interface DaoBehaviorBankAccount {
 	void addNewBankAccount(BankAccount bankAccount) throws DaoException;
 
 	/**
-	 * Update an {@code BankAccount} object at the datasource.
+	 * Updates an {@code BankAccount} object at the datasource.
 	 * 
 	 * @param bankAccount
 	 *            An {@code BankAccount} object to update
 	 * 
 	 * @throws DaoException
 	 */
-	void updateBankAccount(BankAccount bankAccount) throws DaoException;
+	void updateBankAccountCurrentBalance(BankAccount bankAccount) throws DaoException;
 
 }

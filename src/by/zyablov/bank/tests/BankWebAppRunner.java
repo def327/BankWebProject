@@ -19,7 +19,7 @@ public class BankWebAppRunner {
 		
 		try {
 			
-			bean.setAuthorityTypeTitle(dao.getAuthorityType(bean).getAuthorityTypeTitle());
+			bean.setAuthorityTypeTitle(dao.getAuthorityTypeById(bean).getAuthorityTypeTitle());
 			System.out.println(bean.getId() + " " + bean.getAuthorityTypeTitle());
 			
 		} catch (DaoException e) {

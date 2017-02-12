@@ -1,5 +1,6 @@
 package by.zyablov.bank.dao.interfaces;
 
+import by.zyablov.bank.beans.User;
 import by.zyablov.bank.beans.UserProfile;
 import by.zyablov.bank.exceptions.DaoException;
 
@@ -15,7 +16,7 @@ import by.zyablov.bank.exceptions.DaoException;
 public interface DaoBehaviorUserProfile {
 
 	/**
-	 * Get an {@code UserProfile} object from a datasource.
+	 * Return's an {@code UserProfile} object from a datasource.
 	 * 
 	 * @param userProfile
 	 *            An {@code UserProfile} object to get
@@ -24,10 +25,10 @@ public interface DaoBehaviorUserProfile {
 	 * 
 	 * @throws DaoException
 	 */
-	UserProfile getUserProfile(UserProfile userProfile) throws DaoException;
+	UserProfile getUserProfile(User user) throws DaoException;
 
 	/**
-	 * Add an {@code UserProfile} object to a datasource.
+	 * Adds an {@code UserProfile} object to a datasource.
 	 * 
 	 * @param userProfile
 	 *            An {@code UserProfile} object to add
@@ -36,14 +37,6 @@ public interface DaoBehaviorUserProfile {
 	 */
 	void addNewUserProfile(UserProfile userProfile) throws DaoException;
 
-	/**
-	 * Update an {@code UserProfile} object at the datasource.
-	 * 
-	 * @param userProfile
-	 *            An {@code UserProfile} object to update
-	 * 
-	 * @throws DaoException
-	 */
-	void updateUserProfile(UserProfile userProfile) throws DaoException;
+
 
 }
