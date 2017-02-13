@@ -1,5 +1,8 @@
 package by.zyablov.bank.dao;
 
+/**
+ * PASSED TESTS!
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,29 +24,29 @@ import by.zyablov.bank.exceptions.DaoException;
 public class DaoAuthorityType extends DaoAbstract implements DaoBehaviorAuthorityType {
 
 	/**
-	 * A position of unique ID of an {@code AuthorityType} object in prepared
-	 * SQL request.
-	 */
-	private static final int QUERY_POSITION_ID_AUTHORITY_TYPE = 1;
-
-	/**
-	 * Database field index of an unique ID for an {@code AuthorityType} object
-	 * from database.
-	 */
-	private static final int ID_AUTHORITY_TYPE = 1;
-
-	/**
-	 * Database field indexof a title name for an {@code AuthorityType} object
-	 * from database.
-	 */
-	private static final int TYPE_TITLE = 2;
-
-	/**
 	 * Return's an {@code AuthorityType} object from a database by its unique
 	 * ID.
 	 */
 	@Override
 	public AuthorityType getAuthorityTypeById(int authorityTypeUniqueId) throws DaoException {
+
+		/**
+		 * A position of unique ID of an {@code AuthorityType} object in
+		 * prepared SQL request.
+		 */
+		final int QUERY_POSITION_ID_AUTHORITY_TYPE = 1;
+
+		/**
+		 * Database answer field index of an unique ID for an
+		 * {@code AuthorityType} object from database.
+		 */
+		final int ID_AUTHORITY_TYPE = 1;
+
+		/**
+		 * Database answer field index of a title name for an
+		 * {@code AuthorityType} object from database.
+		 */
+		final int TYPE_TITLE = 2;
 
 		AuthorityType authorityTypeObjectFromDataBase = null;
 

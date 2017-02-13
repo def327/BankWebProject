@@ -28,12 +28,15 @@ public interface DaoBehaviorBankAccount {
 	/**
 	 * Adds an {@code BankAccount} object to a datasource.
 	 * 
-	 * @param bankAccount
-	 *            An {@code BankAccount} object to add
+	 * @param bankAccountMoneyBalance
+	 *            A money balance for a {@code BankAccount} object
+	 * 
+	 * @param bankAccountStateId
+	 *            A working state ID of a {@code BankAccount} object
 	 * 
 	 * @throws DaoException
 	 */
-	void addNewBankAccount(BankAccount bankAccount) throws DaoException;
+	void addNewBankAccount(int bankAccountMoneyBalance, int bankAccountStateId) throws DaoException;
 
 	/**
 	 * Updates an {@code BankAccount} object current money balance at the

@@ -1,5 +1,8 @@
 package by.zyablov.bank.dao;
 
+/**
+ * PASSED TESTS!
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,6 +31,30 @@ public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccoun
 	@Override
 	public BankAccount getBankAccountById(int bankAccountId) throws DaoException {
 
+		/**
+		 * A position of unique ID of an {@code BankAccount} object in prepared
+		 * SQL request.
+		 */
+		final int QUERY_POSITION_ID_BANK_ACCOUNT = 1;
+
+		/**
+		 * Database answer field index of an unique ID for an
+		 * {@code BankAccount} object from database.
+		 */
+		final int ID_BANK_ACCOUNT = 1;
+
+		/**
+		 * Database answer field index of an current money balance for an
+		 * {@code BankAccount} object from database.
+		 */
+		final int CURRENT_BALANCE = 2;
+
+		/**
+		 * Database answer field index of an bank account working state ID for
+		 * an {@code BankAccount} object from database.
+		 */
+		final int ID_BANK_ACCOUNT_STATE = 3;
+
 		BankAccount bankAccountObjectFromDataBase = null;
 
 		Connection connectionToDataBase = null;
@@ -41,7 +68,7 @@ public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccoun
 			preparedStatement = connectionToDataBase
 					.prepareStatement(super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_GET_BANK_ACCOUNT));
 
-			preparedStatement.setInt(1, bankAccountId);
+			preparedStatement.setInt(QUERY_POSITION_ID_BANK_ACCOUNT, bankAccountId);
 
 			result = preparedStatement.executeQuery();
 
@@ -51,11 +78,11 @@ public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccoun
 
 				do {
 
-					bankAccountObjectFromDataBase.setId(result.getInt(1));
-					bankAccountObjectFromDataBase.setCurrentBalance(result.getInt(2));
+					bankAccountObjectFromDataBase.setId(result.getInt(ID_BANK_ACCOUNT));
+					bankAccountObjectFromDataBase.setCurrentBalance(result.getInt(CURRENT_BALANCE));
 
 					bankAccountObjectFromDataBase.setBankAccountState(new BankAccountState());
-					bankAccountObjectFromDataBase.getBankAccountState().setId(result.getInt(3));
+					bankAccountObjectFromDataBase.getBankAccountState().setId(result.getInt(ID_BANK_ACCOUNT_STATE));
 
 				} while (result.next());
 
@@ -111,7 +138,19 @@ public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccoun
 	 * Adds a new {@code BankAccount} object to a database.
 	 */
 	@Override
-	public void addNewBankAccount(BankAccount bankAccount) throws DaoException {
+	public void addNewBankAccount(int bankAccountMoneyBalance, int bankAccountStateId) throws DaoException {
+
+		/**
+		 * A position of an current money balance of an {@code BankAccount}
+		 * object in prepared SQL request.
+		 */
+		final int QUERY_POSITION_CURRENT_BALANCE = 1;
+
+		/**
+		 * A position of an bank account working state ID of an
+		 * {@code BankAccount} object in prepared SQL request.
+		 */
+		final int QUERY_POSITION_ID_BANK_ACCOUNT_STATE = 2;
 
 		Connection connectionToDataBase = null;
 		PreparedStatement preparedStatement = null;
@@ -124,9 +163,87 @@ public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccoun
 			preparedStatement = connectionToDataBase
 					.prepareStatement(super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_ADD_NEW_BANK_ACCOUNT));
 
-			preparedStatement.setInt(1, bankAccount.getId());
-			preparedStatement.setInt(2, bankAccount.getCurrentBalance());
-			preparedStatement.setInt(3, bankAccount.getBankAccountState().getId());
+			preparedStatement.setInt(QUERY_POSITION_CURRENT_BALANCE, bankAccountMoneyBalance);
+			preparedStatement.setInt(QUERY_POSITION_ID_BANK_ACCOUNT_STATE, bankAccountStateId);
+
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+
+			// Logging
+
+			DataBaseManager.getInstance().closeDataBaseManager();
+			ManagerSQL.getInstance().closeManagerSql();
+
+			throw new DaoException();
+
+		} finally {
+
+			if (result != null)
+
+				try {
+					result.close();
+
+				} catch (SQLException ignore) {
+
+					// Logging
+				}
+
+			if (preparedStatement != null)
+
+				try {
+					preparedStatement.close();
+
+				} catch (SQLException ignore) {
+
+					// Logging
+				}
+
+			if (connectionToDataBase != null)
+
+				try {
+					connectionToDataBase.close();
+
+				} catch (SQLException ignore) {
+
+					// Logging
+				}
+		}
+
+	}
+
+	/**
+	 * Updates a current balance of a {@code BankAccount} object at the
+	 * database.
+	 */
+	@Override
+	public void updateBankAccountCurrentBalance(int bankAccountId, int newBalance) throws DaoException {
+
+		/**
+		 * A position of an current money balance of an {@code BankAccount}
+		 * object in prepared SQL request.
+		 */
+		final int QUERY_POSITION_CURRENT_BALANCE = 1;
+
+		/**
+		 * A position of unique ID of an {@code BankAccount} object in prepared
+		 * SQL request.
+		 */
+		final int QUERY_POSITION_ID_BANK_ACCOUNT = 2;
+
+		Connection connectionToDataBase = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet result = null;
+
+		try {
+
+			connectionToDataBase = super.dataSource.getConnection();
+
+			preparedStatement = connectionToDataBase.prepareStatement(
+					super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_UPDATE_BANK_ACCOUNT_CURRENT_BALANCE));
+
+			preparedStatement.setInt(QUERY_POSITION_CURRENT_BALANCE, newBalance);
+			preparedStatement.setInt(QUERY_POSITION_ID_BANK_ACCOUNT, bankAccountId);
 
 			preparedStatement.executeUpdate();
 
@@ -176,75 +293,23 @@ public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccoun
 	}
 
 	/**
-	 * Updates a current balance of a {@code BankAccount} object at the
+	 * Updates a current working state of a {@code BankAccount} object at the
 	 * database.
 	 */
 	@Override
-	public void updateBankAccountCurrentBalance(int bankAccountId, int newBalance) throws DaoException {
-
-		Connection connectionToDataBase = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet result = null;
-
-		try {
-
-			connectionToDataBase = super.dataSource.getConnection();
-
-			preparedStatement = connectionToDataBase.prepareStatement(
-					super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_UPDATE_BANK_ACCOUNT_CURRENT_BALANCE));
-
-			preparedStatement.setInt(1, newBalance);
-			preparedStatement.setInt(2, bankAccountId);
-
-			preparedStatement.executeUpdate();
-
-		} catch (SQLException e) {
-
-			// Logging
-
-			DataBaseManager.getInstance().closeDataBaseManager();
-			ManagerSQL.getInstance().closeManagerSql();
-
-			throw new DaoException();
-
-		} finally {
-
-			if (result != null)
-
-				try {
-					result.close();
-
-				} catch (SQLException ignore) {
-
-					// Logging
-				}
-
-			if (preparedStatement != null)
-
-				try {
-					preparedStatement.close();
-
-				} catch (SQLException ignore) {
-
-					// Logging
-				}
-
-			if (connectionToDataBase != null)
-
-				try {
-					connectionToDataBase.close();
-
-				} catch (SQLException ignore) {
-
-					// Logging
-				}
-
-		}
-
-	}
-
-	@Override
 	public void updateBankAccountStateId(int bankAccountId, int bankAccountStateId) throws DaoException {
+
+		/**
+		 * A position of an bank account working state ID of an
+		 * {@code BankAccount} object in prepared SQL request.
+		 */
+		final int QUERY_POSITION_ID_BANK_ACCOUNT_STATE = 1;
+
+		/**
+		 * A position of unique ID of an {@code BankAccount} object in prepared
+		 * SQL request.
+		 */
+		final int QUERY_POSITION_ID_BANK_ACCOUNT = 2;
 
 		Connection connectionToDataBase = null;
 		PreparedStatement preparedStatement = null;
@@ -257,8 +322,9 @@ public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccoun
 			preparedStatement = connectionToDataBase.prepareStatement(
 					super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_UPDATE_BANK_ACCOUNT_ID_BANK_ACCOUNT_STATE));
 
-			preparedStatement.setInt(1, bankAccountStateId);
-			preparedStatement.setInt(2, bankAccountId);
+			preparedStatement.setInt(QUERY_POSITION_ID_BANK_ACCOUNT_STATE, bankAccountStateId);
+
+			preparedStatement.setInt(QUERY_POSITION_ID_BANK_ACCOUNT, bankAccountId);
 
 			preparedStatement.executeUpdate();
 
