@@ -8,8 +8,8 @@ import by.zyablov.bank.exceptions.DaoException;
  * Interface {@code DaoBehaviorUser} defines methods to work with {@code User}
  * objects from a datasource.
  * 
- * 
  * @author Дмитрий
+ * 
  * @see User
  *
  */
@@ -18,9 +18,8 @@ public interface DaoBehaviorUser {
 	/**
 	 * Return's a {@code User} object from a datasource.
 	 * 
-	 * 
-	 * @param user
-	 *            An {@code User} object to get
+	 * @param userLogin
+	 *            An unique login of an {@code User} object to get
 	 * 
 	 * @return An {@code User} object from a datasource
 	 * 
@@ -37,6 +36,6 @@ public interface DaoBehaviorUser {
 	 * @throws DaoException
 	 */
 	void addNewUserClient(User user) throws DaoException;
-
+	
 
 }

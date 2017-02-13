@@ -17,15 +17,23 @@ public interface DaoBehaviorCreditCardType {
 	/**
 	 * Return's a {@code CreditCardType} object from a datasource.
 	 * 
-	 * @param creditCardType
-	 *            An {@code CreditCardType} object to get
-	 *            
+	 * @param creditCardTypeId
+	 *            A unique ID of an {@code CreditCardType} object to get
+	 * 
 	 * @return A {@code CreditCardType} object from a datasource
 	 * 
 	 * @throws DaoException
 	 */
 	CreditCardType getCreditCardType(int creditCardTypeId) throws DaoException;
-	
+
+	/**
+	 * Return's a list of {@code CreditCardType} objects, that exist at the
+	 * datasource.
+	 * 
+	 * @return A list of {@code CreditCardType} objects
+	 * 
+	 * @throws DaoException
+	 */
 	List<CreditCardType> getListOfCreditCardTypes() throws DaoException;
 
 }

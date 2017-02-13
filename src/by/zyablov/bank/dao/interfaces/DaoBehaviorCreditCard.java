@@ -16,12 +16,13 @@ import by.zyablov.bank.exceptions.DaoException;
 public interface DaoBehaviorCreditCard {
 
 	/**
-	 * Return's a list of {@code CreditCard} objects from a datasource.
+	 * Return's a list of {@code CreditCard} objects, that are linked to the
+	 * concrete {@code BankAccount} object from a datasource.
 	 * 
-	 * @param creditCard
-	 *            An {@code CreditCard} object to get
+	 * @param bankAccountId
+	 *            A unique ID of an {@code BankAccount} object
 	 * 
-	 * @return A list of {@code CreditCard} objects from a datasource
+	 * @return A list of {@code CreditCard} objects
 	 * 
 	 * @throws DaoException
 	 */
@@ -32,6 +33,9 @@ public interface DaoBehaviorCreditCard {
 	 * 
 	 * @param creditCard
 	 *            An {@code CreditCard} object to add
+	 * 
+	 * @param bankAccountId
+	 *            A unique ID of an {@code BankAccount} object
 	 * 
 	 * @throws DaoException
 	 */

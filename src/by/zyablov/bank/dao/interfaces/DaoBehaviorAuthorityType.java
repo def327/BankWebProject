@@ -15,8 +15,8 @@ public interface DaoBehaviorAuthorityType {
 	/**
 	 * Return's an {@code AuthorityType} object from a datasource.
 	 * 
-	 * @param bankAccount
-	 *            An {@code AuthorityType} object to get
+	 * @param authorityTypeUniqueId
+	 *            A unique ID of an {@code AuthorityType} object to get
 	 * 
 	 * @return An {@code AuthorityType} object from a datasource
 	 * 

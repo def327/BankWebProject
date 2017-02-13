@@ -20,29 +20,25 @@ public class BankWebAppRunner {
 
 	public static void main(String[] args) throws SQLException, DaoException {
 
-
-
 		try {
 
-			
 			List<CreditCardType> list;
-			
+
 			DaoBehaviorCreditCardType dao1 = new DaoCreditCardType();
-			
+
 			list = dao1.getListOfCreditCardTypes();
-			
-			if(list== null){
+
+			if (list == null) {
 				System.out.println("empty!");
 				DataBaseManager.getInstance().closeDataBaseManager();
 				return;
 			}
-			
+
 			for (Iterator iterator = list.iterator(); iterator.hasNext();) {
 				CreditCardType creditCardType = (CreditCardType) iterator.next();
-				
+
 				System.out.println(creditCardType.getId() + " " + creditCardType.getCardTypeTitle());
-			
-				
+
 			}
 
 		} catch (DaoException e) {

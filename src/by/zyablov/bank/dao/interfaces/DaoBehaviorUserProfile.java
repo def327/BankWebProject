@@ -18,8 +18,8 @@ public interface DaoBehaviorUserProfile {
 	/**
 	 * Return's an {@code UserProfile} object from a datasource.
 	 * 
-	 * @param userProfile
-	 *            An {@code UserProfile} object to get
+	 * @param userId
+	 *            An unique ID of an {@code UserProfile} object to get
 	 * 
 	 * @return An {@code UserProfile} object from a datasource
 	 * 
@@ -30,13 +30,12 @@ public interface DaoBehaviorUserProfile {
 	/**
 	 * Adds an {@code UserProfile} object to a datasource.
 	 * 
-	 * @param userProfile
-	 *            An {@code UserProfile} object to add
+	 * @param user
+	 *            An {@code User} object, that contains this {@code UserProfile}
+	 *            object.
 	 * 
 	 * @throws DaoException
 	 */
 	void addNewUserProfile(User user) throws DaoException;
-
-
 
 }
