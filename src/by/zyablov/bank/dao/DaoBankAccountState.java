@@ -8,7 +8,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import by.zyablov.bank.beans.BankAccountState;
-import by.zyablov.bank.beans.CreditCardType;
 import by.zyablov.bank.dao.interfaces.DaoBehaviorBankAccountState;
 import by.zyablov.bank.datasource.DataBaseManager;
 import by.zyablov.bank.datasource.tools.ManagerSQL;

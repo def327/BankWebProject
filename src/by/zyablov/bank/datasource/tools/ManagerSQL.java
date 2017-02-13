@@ -26,6 +26,10 @@ public class ManagerSQL implements ManagerSQLBehavior {
 	// UserProfile DAO
 	public static final String SQL_GET_USER_PROFILE = "SQL_GET_USER_PROFILE";
 	public static final String SQL_ADD_NEW_USER_PROFILE = "SQL_ADD_NEW_USER_PROFILE";
+	
+	// CreditCard DAO
+	public static final String SQL_GET_LIST_CREDIT_CARD = "SQL_GET_LIST_CREDIT_CARD";
+	public static final String SQL_ADD_NEW_CREDIT_CARD = "SQL_ADD_NEW_CREDIT_CARD";
 
 	// CreditCardType DAO
 	public static final String SQL_GET_CREDIT_CARD_TYPE = "SQL_GET_CREDIT_CARD_TYPE";
@@ -40,6 +44,8 @@ public class ManagerSQL implements ManagerSQLBehavior {
 	// BankAccountState DAO
 	public static final String SQL_GET_BANK_ACCOUNT_STATE = "SQL_GET_BANK_ACCOUNT_STATE";
 	public static final String SQL_GET_LIST_BANK_ACCOUNT_STATE = "SQL_GET_LIST_BANK_ACCOUNT_STATE";
+
+	
 
 	/**
 	 * An instance of {@code ManagerSQL} object.

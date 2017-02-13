@@ -25,7 +25,7 @@ public interface DaoBehaviorCreditCard {
 	 * 
 	 * @throws DaoException
 	 */
-	List<CreditCard> getCreditCard(CreditCard creditCard) throws DaoException;
+	List<CreditCard> getListOfCreditCard(int bankAccountId) throws DaoException;
 
 	/**
 	 * Adds a {@code CreditCard} object to a datasource.
@@ -35,6 +35,6 @@ public interface DaoBehaviorCreditCard {
 	 * 
 	 * @throws DaoException
 	 */
-	void addNewCreditCard(CreditCard creditCard) throws DaoException;
+	void addNewCreditCard(CreditCard creditCard, int bankAccountId) throws DaoException;
 
 }
