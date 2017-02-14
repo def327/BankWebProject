@@ -33,44 +33,30 @@ import by.zyablov.bank.exceptions.DaoException;
 public class BankWebAppRunner {
 
 	public static void main(String[] args) throws SQLException, DaoException {
-
-		try{
 		
-		DaoBehaviorUser dao = new DaoUser();
+		DaoBehaviorUserProfile dao = new DaoUserProfile();
 		
+		UserProfile profile = dao.getUserProfile(6);
 		
-	
-		
-		
-		}catch(StackOverflowError e){
+		if(profile == null){
+			System.out.println("Empty!");
+		}else{
 			
-			System.out.println("I in the catch block!");
-			e.printStackTrace();
+			System.out.println(profile.getId());
+			System.out.println(profile.getFirstName());
+			System.out.println(profile.getLastName());
+			System.out.println(profile.getPassportSeria());
+			System.out.println(profile.getEmail());
 			
-		}finally{
-			System.out.println("I in the finally block !");
+			if(profile instanceof UserProfileClient){
+				
+				UserProfileClient clientProfile = (UserProfileClient)profile;
+				
+				System.out.println(clientProfile.getBankAccount().getId() + " - bank account");
+				
+			}
+			
 		}
-
-//		User user = new User();
-//		
-//		user.setLogin("def45");
-//		user.setPassword("1234564");
-//		user.setAuthorityType(new AuthorityType());
-//		user.getAuthorityType().setId(2);
-//		
-//		dao.addNewUserClient(user);
-
-//		if (user == null) {
-//			System.out.println("Empty!");
-//		} else {
-//
-//			System.out.println(user.getId());
-//			System.out.println(user.getLogin());
-//			System.out.println(user.getPassword());
-//			System.out.println(user.getAuthorityType().getId());
-//			
-//
-//		}
 
 		DataBaseManager.getInstance().closeDataBaseManager();
 	}

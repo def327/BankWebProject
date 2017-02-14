@@ -19,7 +19,7 @@ public interface DaoBehaviorUserProfile {
 	 * Return's an {@code UserProfile} object from a datasource.
 	 * 
 	 * @param userId
-	 *            An unique ID of an {@code UserProfile} object to get
+	 *            An unique ID of the {@code User} object to get
 	 * 
 	 * @return An {@code UserProfile} object from a datasource
 	 * 

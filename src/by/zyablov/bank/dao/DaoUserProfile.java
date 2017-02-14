@@ -27,16 +27,58 @@ import by.zyablov.bank.exceptions.DaoException;
 public class DaoUserProfile extends DaoAbstract implements DaoBehaviorUserProfile {
 
 	/**
-	 * A position of an unique user id in prepared SQL request.
-	 */
-	private static final int QUERY_POSITION_ID_USER = 1;
-
-	/**
 	 * Return's a {@code UserProfile} objects from database by its unuqie ID of
 	 * the {@code User} object.
 	 */
 	@Override
 	public UserProfile getUserProfile(int userId) throws DaoException {
+
+		/**
+		 * A position of an unique user's ID in prepared SQL request.
+		 */
+		final int QUERY_POSITION_ID_USER = 1;
+
+		/**
+		 * Database answer field index of an unique profile ID for an
+		 * {@code UserProfile} object from a database.
+		 */
+		final int ID_USER_PROFILE = 1;
+
+		/**
+		 * Database answer field index of a first name for an
+		 * {@code UserProfile} object from a database.
+		 */
+		final int FIRST_NAME = 2;
+
+		/**
+		 * Database answer field index of a last name for an {@code UserProfile}
+		 * object from a database.
+		 */
+		final int LAST_NAME = 3;
+
+		/**
+		 * Database answer field index of an email for an {@code UserProfile}
+		 * object from a database.
+		 */
+		final int EMAIL = 4;
+
+		/**
+		 * Database answer field index of a passport seria for an
+		 * {@code UserProfile} object from a database.
+		 */
+		final int PASSPORT_SERIA = 5;
+
+		/**
+		 * Database answer field index of an unique bank account ID for a
+		 * {@code BankAccount} object from database.
+		 */
+		final int ID_BANK_ACCOUNT = 7;
+
+		/**
+		 * This value indicates that a field 'id_bank_account' is NULL at the
+		 * database, means it's a profile of the admin.
+		 */
+		final int ADMIN_PROFILE_INDICATOR = 0;
 
 		UserProfile userProfileObjectFromDataBase = null;
 
@@ -57,17 +99,17 @@ public class DaoUserProfile extends DaoAbstract implements DaoBehaviorUserProfil
 			if (result.next()) {
 
 				// Admin profile
-				if (result.getInt(7) == 0) {
+				if (result.getInt(ID_BANK_ACCOUNT) == ADMIN_PROFILE_INDICATOR) {
 
 					UserProfileAdmin resultUserProfileObjectFromDataBase = new UserProfileAdmin();
 
 					do {
 
-						resultUserProfileObjectFromDataBase.setId(result.getInt(1));
-						resultUserProfileObjectFromDataBase.setFirstName(result.getString(2));
-						resultUserProfileObjectFromDataBase.setLastName(result.getString(3));
-						resultUserProfileObjectFromDataBase.setEmail(result.getString(4));
-						resultUserProfileObjectFromDataBase.setPassportSeria(result.getString(5));
+						resultUserProfileObjectFromDataBase.setId(result.getInt(ID_USER_PROFILE));
+						resultUserProfileObjectFromDataBase.setFirstName(result.getString(FIRST_NAME));
+						resultUserProfileObjectFromDataBase.setLastName(result.getString(LAST_NAME));
+						resultUserProfileObjectFromDataBase.setEmail(result.getString(EMAIL));
+						resultUserProfileObjectFromDataBase.setPassportSeria(result.getString(PASSPORT_SERIA));
 
 						userProfileObjectFromDataBase = resultUserProfileObjectFromDataBase;
 
@@ -75,17 +117,19 @@ public class DaoUserProfile extends DaoAbstract implements DaoBehaviorUserProfil
 
 				} else {
 
+					// Client profile
+
 					UserProfileClient resultUserProfileObjectFromDataBase = new UserProfileClient();
 
 					do {
 
-						resultUserProfileObjectFromDataBase.setId(result.getInt(1));
-						resultUserProfileObjectFromDataBase.setFirstName(result.getString(2));
-						resultUserProfileObjectFromDataBase.setLastName(result.getString(3));
-						resultUserProfileObjectFromDataBase.setEmail(result.getString(4));
-						resultUserProfileObjectFromDataBase.setPassportSeria(result.getString(5));
+						resultUserProfileObjectFromDataBase.setId(result.getInt(ID_USER_PROFILE));
+						resultUserProfileObjectFromDataBase.setFirstName(result.getString(FIRST_NAME));
+						resultUserProfileObjectFromDataBase.setLastName(result.getString(LAST_NAME));
+						resultUserProfileObjectFromDataBase.setEmail(result.getString(EMAIL));
+						resultUserProfileObjectFromDataBase.setPassportSeria(result.getString(PASSPORT_SERIA));
 						resultUserProfileObjectFromDataBase.setBankAccount(new BankAccount());
-						resultUserProfileObjectFromDataBase.getBankAccount().setId(result.getInt(7));
+						resultUserProfileObjectFromDataBase.getBankAccount().setId(result.getInt(ID_BANK_ACCOUNT));
 
 						userProfileObjectFromDataBase = resultUserProfileObjectFromDataBase;
 

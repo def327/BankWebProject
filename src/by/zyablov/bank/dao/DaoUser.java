@@ -1,4 +1,5 @@
 package by.zyablov.bank.dao;
+
 /**
  * PASSED TESTS!
  */
@@ -35,26 +36,26 @@ public class DaoUser extends DaoAbstract implements DaoBehaviorUser {
 		final int QUERY_POSITION_LOGIN = 1;
 
 		/**
-		 * Database field index of an unique ID for an {@code User} object from
-		 * a database.
+		 * Database answer field index of an unique ID for an {@code User}
+		 * object from a database.
 		 */
 		final int ID_USER = 1;
 
 		/**
-		 * Database field index of a login for an {@code User} object from
-		 * database.
+		 * Database answer field index of a login for an {@code User} object
+		 * from database.
 		 */
 		final int LOGIN = 2;
 
 		/**
-		 * Database field index of a password for an {@code User} object from
-		 * database.
+		 * Database answer field index of a password for an {@code User} object
+		 * from database.
 		 */
 		final int PASSWORD = 3;
 
 		/**
-		 * Database field index of an unique ID for an {@code AuthorityType}
-		 * object of the{@code User} object from database.
+		 * Database answer field index of an unique ID for an
+		 * {@code AuthorityType} object of the{@code User} object from database.
 		 */
 		final int ID_AUTHORITY_TYPE = 4;
 
