@@ -1,6 +1,7 @@
-
 package by.zyablov.bank.dao;
-
+/**
+ * PASSED TESTS!
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,48 +24,39 @@ import by.zyablov.bank.exceptions.DaoException;
 public class DaoUser extends DaoAbstract implements DaoBehaviorUser {
 
 	/**
-	 * A position of authority type in prepared SQL request.
-	 */
-	private static final int QUERY_POSITION_ID_AUTHORITY_TYPE = 3;
-
-	/**
-	 * A position of password in prepared SQL request.
-	 */
-	private static final int QUERY_POSITION_PASSWORD = 2;
-
-	/**
-	 * A position of login in prepared SQL request.
-	 */
-	private static final int QUERY_POSITION_LOGIN = 1;
-
-	/**
-	 * Database field index of an unique ID for an {@code User} object from a
-	 * database.
-	 */
-	private static final int ID_USER = 1;
-
-	/**
-	 * Database field index of a login for an {@code User} object from database.
-	 */
-	private static final int LOGIN = 2;
-
-	/**
-	 * Database field index of a password for an {@code User} object from
-	 * database.
-	 */
-	private static final int PASSWORD = 3;
-
-	/**
-	 * Database field index of an unique ID for an {@code AuthorityType} object
-	 * of the{@code User} object from database.
-	 */
-	private static final int ID_AUTHORITY_TYPE = 4;
-
-	/**
 	 * Return's an {@code User} object by unique login.
 	 */
 	@Override
 	public User getUserByLogin(String userLogin) throws DaoException {
+
+		/**
+		 * A position of login in prepared SQL request.
+		 */
+		final int QUERY_POSITION_LOGIN = 1;
+
+		/**
+		 * Database field index of an unique ID for an {@code User} object from
+		 * a database.
+		 */
+		final int ID_USER = 1;
+
+		/**
+		 * Database field index of a login for an {@code User} object from
+		 * database.
+		 */
+		final int LOGIN = 2;
+
+		/**
+		 * Database field index of a password for an {@code User} object from
+		 * database.
+		 */
+		final int PASSWORD = 3;
+
+		/**
+		 * Database field index of an unique ID for an {@code AuthorityType}
+		 * object of the{@code User} object from database.
+		 */
+		final int ID_AUTHORITY_TYPE = 4;
 
 		User userObjectFromDataBase = null;
 
@@ -149,6 +141,24 @@ public class DaoUser extends DaoAbstract implements DaoBehaviorUser {
 	@Override
 	public void addNewUserClient(User user) throws DaoException {
 
+		/**
+		 * A position of unique login for an {@code User} object in prepared SQL
+		 * request.
+		 */
+		final int QUERY_POSITION_LOGIN = 1;
+
+		/**
+		 * A position of password for an {@code User} object in prepared SQL
+		 * request.
+		 */
+		final int QUERY_POSITION_PASSWORD = 2;
+
+		/**
+		 * A position of authority type for an {@code User} object in prepared
+		 * SQL request.
+		 */
+		final int QUERY_POSITION_ID_AUTHORITY_TYPE = 3;
+
 		Connection connectionToDataBase = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet result = null;
@@ -163,7 +173,7 @@ public class DaoUser extends DaoAbstract implements DaoBehaviorUser {
 			preparedStatement.setString(QUERY_POSITION_LOGIN, user.getLogin());
 			preparedStatement.setString(QUERY_POSITION_PASSWORD, user.getPassword());
 			preparedStatement.setInt(QUERY_POSITION_ID_AUTHORITY_TYPE, user.getAuthorityType().getId());
-			
+
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {

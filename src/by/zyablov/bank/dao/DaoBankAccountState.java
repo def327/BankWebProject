@@ -1,5 +1,8 @@
 package by.zyablov.bank.dao;
 
+/**
+ * PASSED TESTS!
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,10 +16,41 @@ import by.zyablov.bank.datasource.DataBaseManager;
 import by.zyablov.bank.datasource.tools.ManagerSQL;
 import by.zyablov.bank.exceptions.DaoException;
 
+/**
+ * Class {@code DaoBankAccountState} provides methods to work with
+ * {@code BankAccountState } object at the database.
+ * 
+ * @author Дмитрий
+ * 
+ * @see BankAccountState
+ *
+ */
 public class DaoBankAccountState extends DaoAbstract implements DaoBehaviorBankAccountState {
 
+	/**
+	 * Return's an {@code BankAccountState} object from a database by its unique
+	 * ID.
+	 */
 	@Override
 	public BankAccountState getBankAccountState(int bankAccountStateId) throws DaoException {
+
+		/**
+		 * A position of unique ID of an {@code BankAccountState} object in
+		 * prepared SQL request.
+		 */
+		final int QUERY_POSITION_ID_BANK_ACCOUNT_STATE = 1;
+
+		/**
+		 * Database answer field index of an bank account working state ID for
+		 * an {@code BankAccountState} object from database.
+		 */
+		final int ID_BANK_ACCOUNT_STATE = 1;
+
+		/**
+		 * Database answer field index of an bank account working state type
+		 * tittle for an {@code BankAccountState} object from database.
+		 */
+		final int ID_BANK_ACCOUNT_TYPE_TITTLE = 2;
 
 		BankAccountState creditCardTypeObjectFromDataBase = null;
 
@@ -31,7 +65,7 @@ public class DaoBankAccountState extends DaoAbstract implements DaoBehaviorBankA
 			preparedStatement = connectionToDataBase
 					.prepareStatement(super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_GET_BANK_ACCOUNT_STATE));
 
-			preparedStatement.setInt(1, bankAccountStateId);
+			preparedStatement.setInt(QUERY_POSITION_ID_BANK_ACCOUNT_STATE, bankAccountStateId);
 			result = preparedStatement.executeQuery();
 
 			if (result.next()) {
@@ -40,8 +74,8 @@ public class DaoBankAccountState extends DaoAbstract implements DaoBehaviorBankA
 
 				do {
 
-					creditCardTypeObjectFromDataBase.setId(result.getInt(1));
-					creditCardTypeObjectFromDataBase.setStateTypeTittle(result.getString(2));
+					creditCardTypeObjectFromDataBase.setId(result.getInt(ID_BANK_ACCOUNT_STATE));
+					creditCardTypeObjectFromDataBase.setStateTypeTittle(result.getString(ID_BANK_ACCOUNT_TYPE_TITTLE));
 
 				} while (result.next());
 			}
@@ -92,9 +126,24 @@ public class DaoBankAccountState extends DaoAbstract implements DaoBehaviorBankA
 		return creditCardTypeObjectFromDataBase;
 	}
 
+	/**
+	 * Return's a list of {@code BankAccountState} objects from a database.
+	 */
 	@Override
 	public List<BankAccountState> getListOfBankAccountStates() throws DaoException {
-		
+
+		/**
+		 * Database answer field index of an bank account working state ID for
+		 * an {@code BankAccountState} object from database.
+		 */
+		final int ID_BANK_ACCOUNT_STATE = 1;
+
+		/**
+		 * Database answer field index of an bank account working state type
+		 * tittle for an {@code BankAccountState} object from database.
+		 */
+		final int ID_BANK_ACCOUNT_TYPE_TITTLE = 2;
+
 		List<BankAccountState> listOfBankAccountStates = null;
 
 		Connection connectionToDataBase = null;
@@ -105,8 +154,8 @@ public class DaoBankAccountState extends DaoAbstract implements DaoBehaviorBankA
 
 			connectionToDataBase = super.dataSource.getConnection();
 
-			preparedStatement = connectionToDataBase
-					.prepareStatement(super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_GET_LIST_BANK_ACCOUNT_STATE));
+			preparedStatement = connectionToDataBase.prepareStatement(
+					super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_GET_LIST_BANK_ACCOUNT_STATE));
 
 			result = preparedStatement.executeQuery();
 
@@ -118,8 +167,9 @@ public class DaoBankAccountState extends DaoAbstract implements DaoBehaviorBankA
 
 					BankAccountState bankAccountStateObjectFromDataBase = new BankAccountState();
 
-					bankAccountStateObjectFromDataBase.setId(result.getInt(1));
-					bankAccountStateObjectFromDataBase.setStateTypeTittle(result.getString(2));
+					bankAccountStateObjectFromDataBase.setId(result.getInt(ID_BANK_ACCOUNT_STATE));
+					bankAccountStateObjectFromDataBase
+							.setStateTypeTittle(result.getString(ID_BANK_ACCOUNT_TYPE_TITTLE));
 
 					listOfBankAccountStates.add(bankAccountStateObjectFromDataBase);
 

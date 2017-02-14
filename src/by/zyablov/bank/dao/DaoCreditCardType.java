@@ -1,5 +1,7 @@
 package by.zyablov.bank.dao;
-
+/**
+ * PASSED TESTS!
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,11 +16,12 @@ import by.zyablov.bank.datasource.tools.ManagerSQL;
 import by.zyablov.bank.exceptions.DaoException;
 
 /**
- * 
  * Class {@code DaoCreditCardType} provides methods to work with
  * {@code CreditCardType} object at the database.
  * 
  * @author Дмитрий
+ * 
+ * @see CreditCardType
  *
  */
 public class DaoCreditCardType extends DaoAbstract implements DaoBehaviorCreditCardType {
@@ -28,6 +31,24 @@ public class DaoCreditCardType extends DaoAbstract implements DaoBehaviorCreditC
 	 */
 	@Override
 	public CreditCardType getCreditCardType(int creditCardTypeId) throws DaoException {
+
+		/**
+		 * A position of unique ID for a {@code CreditCardType} object in
+		 * prepared SQL request.
+		 */
+		final int QUERY_POSITION_ID_CREDIT_CARD_TYPE = 1;
+
+		/**
+		 * Database answer field index of an unique ID of a card type for a
+		 * {@code CreditCardType} object from database.
+		 */
+		final int ID_CREDIT_CARD_TYPE = 1;
+
+		/**
+		 * Database answer field index of card type tittle for a
+		 * {@code CreditCardType} object from database.
+		 */
+		final int CARD_TYPE_TITTLE = 2;
 
 		CreditCardType creditCardTypeObjectFromDataBase = null;
 
@@ -42,7 +63,7 @@ public class DaoCreditCardType extends DaoAbstract implements DaoBehaviorCreditC
 			preparedStatement = connectionToDataBase
 					.prepareStatement(super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_GET_CREDIT_CARD_TYPE));
 
-			preparedStatement.setInt(1, creditCardTypeId);
+			preparedStatement.setInt(QUERY_POSITION_ID_CREDIT_CARD_TYPE, creditCardTypeId);
 			result = preparedStatement.executeQuery();
 
 			if (result.next()) {
@@ -51,8 +72,8 @@ public class DaoCreditCardType extends DaoAbstract implements DaoBehaviorCreditC
 
 				do {
 
-					creditCardTypeObjectFromDataBase.setId(result.getInt(1));
-					creditCardTypeObjectFromDataBase.setCardTypeTitle(result.getString(2));
+					creditCardTypeObjectFromDataBase.setId(result.getInt(ID_CREDIT_CARD_TYPE));
+					creditCardTypeObjectFromDataBase.setCardTypeTitle(result.getString(CARD_TYPE_TITTLE));
 
 				} while (result.next());
 			}
@@ -104,8 +125,23 @@ public class DaoCreditCardType extends DaoAbstract implements DaoBehaviorCreditC
 
 	}
 
+	/**
+	 * Return's a list of {@code CreditCardType} objects from a database.
+	 */
 	@Override
 	public List<CreditCardType> getListOfCreditCardTypes() throws DaoException {
+
+		/**
+		 * Database answer field index of an unique ID of a card type for a
+		 * {@code CreditCardType} object from database.
+		 */
+		final int ID_CREDIT_CARD_TYPE = 1;
+
+		/**
+		 * Database answer field index of card type tittle for a
+		 * {@code CreditCardType} object from database.
+		 */
+		final int CARD_TYPE_TITTLE = 2;
 
 		List<CreditCardType> listOfCreditCardtypes = null;
 
@@ -130,8 +166,8 @@ public class DaoCreditCardType extends DaoAbstract implements DaoBehaviorCreditC
 
 					CreditCardType creditCardTypeObjectFromDataBase = new CreditCardType();
 
-					creditCardTypeObjectFromDataBase.setId(result.getInt(1));
-					creditCardTypeObjectFromDataBase.setCardTypeTitle(result.getString(2));
+					creditCardTypeObjectFromDataBase.setId(result.getInt(ID_CREDIT_CARD_TYPE));
+					creditCardTypeObjectFromDataBase.setCardTypeTitle(result.getString(CARD_TYPE_TITTLE));
 
 					listOfCreditCardtypes.add(creditCardTypeObjectFromDataBase);
 

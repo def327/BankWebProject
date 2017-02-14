@@ -1,5 +1,7 @@
 package by.zyablov.bank.dao;
-
+/**
+ * PASSED TESTS!
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,8 +27,36 @@ import by.zyablov.bank.exceptions.DaoException;
  */
 public class DaoCreditCard extends DaoAbstract implements DaoBehaviorCreditCard {
 
+	/**
+	 * Return's a list of {@code CreditCard} objects from a database by an
+	 * unique bank account ID.
+	 */
 	@Override
 	public List<CreditCard> getListOfCreditCard(int bankAccountId) throws DaoException {
+
+		/**
+		 * A position of unique ID of a {@code BankAccount} object in prepared
+		 * SQL request.
+		 */
+		final int QUERY_POSITION_ID_BANK_ACCOUNT = 1;
+
+		/**
+		 * Database answer field index of an unique ID for a {@code CreditCard}
+		 * object from database.
+		 */
+		final int ID_CREDIT_CARD = 1;
+
+		/**
+		 * Database answer field index of an unique card number for a
+		 * {@code CreditCard} object from database.
+		 */
+		final int UNIQUE_CARD_NUMBER = 2;
+
+		/**
+		 * Database answer field index of an unique ID of a card type for a
+		 * {@code CreditCard} object from database.
+		 */
+		final int ID_CARD_TYPE = 3;
 
 		List<CreditCard> listOfCreditCards = null;
 
@@ -41,6 +71,8 @@ public class DaoCreditCard extends DaoAbstract implements DaoBehaviorCreditCard 
 			preparedStatement = connectionToDataBase
 					.prepareStatement(super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_GET_LIST_CREDIT_CARD));
 
+			preparedStatement.setInt(QUERY_POSITION_ID_BANK_ACCOUNT, bankAccountId);
+
 			result = preparedStatement.executeQuery();
 
 			if (result.next()) {
@@ -51,10 +83,11 @@ public class DaoCreditCard extends DaoAbstract implements DaoBehaviorCreditCard 
 
 					CreditCard creditCardObjectFromDataBase = new CreditCard();
 
-					creditCardObjectFromDataBase.setId(result.getInt(1));
-					creditCardObjectFromDataBase.setUniqueCardNumber(result.getString(2));
+					creditCardObjectFromDataBase.setId(result.getInt(ID_CREDIT_CARD));
+
+					creditCardObjectFromDataBase.setUniqueCardNumber(result.getString(UNIQUE_CARD_NUMBER));
 					creditCardObjectFromDataBase.setCardtype(new CreditCardType());
-					creditCardObjectFromDataBase.getCardtype().setId(result.getInt(3));
+					creditCardObjectFromDataBase.getCardtype().setId(result.getInt(ID_CARD_TYPE));
 
 					listOfCreditCards.add(creditCardObjectFromDataBase);
 
@@ -113,7 +146,24 @@ public class DaoCreditCard extends DaoAbstract implements DaoBehaviorCreditCard 
 	@Override
 	public void addNewCreditCard(CreditCard creditCard, int bankAccountId) throws DaoException {
 
-		
+		/**
+		 * A position of unique card number for a {@code CreditCard} object in
+		 * prepared SQL request.
+		 */
+		final int QUERY_POSITION_UNIQUE_CARD_NUMBER = 1;
+
+		/**
+		 * A position of unique ID of a {@code BankAccount} object in prepared
+		 * SQL request.
+		 */
+		final int QUERY_POSITION_ID_BANK_ACCOUNT = 2;
+
+		/**
+		 * A position of card type ID for a {@code CreditCard} object in
+		 * prepared SQL request.
+		 */
+		final int QUERY_POSITION_ID_CARD_TYPE = 3;
+
 		Connection connectionToDataBase = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet result = null;
@@ -125,9 +175,9 @@ public class DaoCreditCard extends DaoAbstract implements DaoBehaviorCreditCard 
 			preparedStatement = connectionToDataBase
 					.prepareStatement(super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_ADD_NEW_CREDIT_CARD));
 
-			 preparedStatement.setString(1, creditCard.getUniqueCardNumber());
-			 preparedStatement.setInt(2,bankAccountId);
-			 preparedStatement.setInt(3,creditCard.getCardtype().getId());
+			preparedStatement.setString(QUERY_POSITION_UNIQUE_CARD_NUMBER, creditCard.getUniqueCardNumber());
+			preparedStatement.setInt(QUERY_POSITION_ID_BANK_ACCOUNT, bankAccountId);
+			preparedStatement.setInt(QUERY_POSITION_ID_CARD_TYPE, creditCard.getCardtype().getId());
 
 			preparedStatement.executeUpdate();
 

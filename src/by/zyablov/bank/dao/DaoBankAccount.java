@@ -32,26 +32,26 @@ public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccoun
 	public BankAccount getBankAccountById(int bankAccountId) throws DaoException {
 
 		/**
-		 * A position of unique ID of an {@code BankAccount} object in prepared
+		 * A position of unique ID for a {@code BankAccount} object in prepared
 		 * SQL request.
 		 */
 		final int QUERY_POSITION_ID_BANK_ACCOUNT = 1;
 
 		/**
-		 * Database answer field index of an unique ID for an
-		 * {@code BankAccount} object from database.
+		 * Database answer field index of an unique ID for a {@code BankAccount}
+		 * object from database.
 		 */
 		final int ID_BANK_ACCOUNT = 1;
 
 		/**
-		 * Database answer field index of an current money balance for an
+		 * Database answer field index of an current money balance for a
 		 * {@code BankAccount} object from database.
 		 */
 		final int CURRENT_BALANCE = 2;
 
 		/**
-		 * Database answer field index of an bank account working state ID for
-		 * an {@code BankAccount} object from database.
+		 * Database answer field index of an bank account working state ID for a
+		 * {@code BankAccount} object from database.
 		 */
 		final int ID_BANK_ACCOUNT_STATE = 3;
 
@@ -141,13 +141,13 @@ public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccoun
 	public void addNewBankAccount(int bankAccountMoneyBalance, int bankAccountStateId) throws DaoException {
 
 		/**
-		 * A position of an current money balance of an {@code BankAccount}
+		 * A position of an current money balance of a {@code BankAccount}
 		 * object in prepared SQL request.
 		 */
 		final int QUERY_POSITION_CURRENT_BALANCE = 1;
 
 		/**
-		 * A position of an bank account working state ID of an
+		 * A position of an bank account working state ID of a
 		 * {@code BankAccount} object in prepared SQL request.
 		 */
 		final int QUERY_POSITION_ID_BANK_ACCOUNT_STATE = 2;
@@ -220,13 +220,13 @@ public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccoun
 	public void updateBankAccountCurrentBalance(int bankAccountId, int newBalance) throws DaoException {
 
 		/**
-		 * A position of an current money balance of an {@code BankAccount}
+		 * A position of an current money balance of a {@code BankAccount}
 		 * object in prepared SQL request.
 		 */
 		final int QUERY_POSITION_CURRENT_BALANCE = 1;
 
 		/**
-		 * A position of unique ID of an {@code BankAccount} object in prepared
+		 * A position of unique ID of a {@code BankAccount} object in prepared
 		 * SQL request.
 		 */
 		final int QUERY_POSITION_ID_BANK_ACCOUNT = 2;
@@ -300,13 +300,13 @@ public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccoun
 	public void updateBankAccountStateId(int bankAccountId, int bankAccountStateId) throws DaoException {
 
 		/**
-		 * A position of an bank account working state ID of an
+		 * A position of an bank account working state ID of a
 		 * {@code BankAccount} object in prepared SQL request.
 		 */
 		final int QUERY_POSITION_ID_BANK_ACCOUNT_STATE = 1;
 
 		/**
-		 * A position of unique ID of an {@code BankAccount} object in prepared
+		 * A position of unique ID of a {@code BankAccount} object in prepared
 		 * SQL request.
 		 */
 		final int QUERY_POSITION_ID_BANK_ACCOUNT = 2;
