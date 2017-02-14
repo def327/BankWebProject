@@ -34,7 +34,8 @@ public class DaoUserProfile extends DaoAbstract implements DaoBehaviorUserProfil
 	public UserProfile getUserProfile(int userId) throws DaoException {
 
 		/**
-		 * A position of an unique user's ID in prepared SQL request.
+		 * A position of an unique ID of the {@code User} object in prepared SQL
+		 * request.
 		 */
 		final int QUERY_POSITION_ID_USER = 1;
 
@@ -189,7 +190,43 @@ public class DaoUserProfile extends DaoAbstract implements DaoBehaviorUserProfil
 	 * Adds a new {@code UserProfile} object to to a database.
 	 */
 	@Override
-	public void addNewUserProfile(User user) throws DaoException {
+	public void addNewUserProfile(User user, UserProfile userProfile) throws DaoException {
+
+		/**
+		 * A position of a first name for the {@code UserProfile} object in
+		 * prepared SQL request.
+		 */
+		final int QUERY_POSITION_FIRST_NAME = 1;
+
+		/**
+		 * A position of a last name for the {@code UserProfile} object in
+		 * prepared SQL request.
+		 */
+		final int QUERY_POSITION_LAST_NAME = 2;
+
+		/**
+		 * A position of an email for the {@code UserProfile} object in prepared
+		 * SQL request.
+		 */
+		final int QUERY_POSITION_EMAIL = 3;
+
+		/**
+		 * A position of a passport seria for the {@code UserProfile} object in
+		 * prepared SQL request.
+		 */
+		final int QUERY_POSITION_PASSPORT_SERIA = 4;
+
+		/**
+		 * A position of an unique ID of the {@code User} object in prepared SQL
+		 * request.
+		 */
+		final int QUERY_POSITION_USER_ID = 5;
+
+		/**
+		 * A position of unique ID for a {@code BankAccount} object in prepared
+		 * SQL request.
+		 */
+		final int QUERY_POSITION_ID_BANK_ACCOUNT = 6;
 
 		Connection connectionToDataBase = null;
 		PreparedStatement preparedStatement = null;
@@ -202,28 +239,23 @@ public class DaoUserProfile extends DaoAbstract implements DaoBehaviorUserProfil
 			preparedStatement = connectionToDataBase
 					.prepareStatement(super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_ADD_NEW_USER_PROFILE));
 
-			if (user.getUserProfile() instanceof UserProfileClient) {
+			preparedStatement.setString(QUERY_POSITION_FIRST_NAME, userProfile.getFirstName());
+			preparedStatement.setString(QUERY_POSITION_LAST_NAME, userProfile.getLastName());
+			preparedStatement.setString(QUERY_POSITION_EMAIL, userProfile.getEmail());
+			preparedStatement.setString(QUERY_POSITION_PASSPORT_SERIA, userProfile.getPassportSeria());
+			preparedStatement.setInt(QUERY_POSITION_USER_ID, user.getId());
 
-				preparedStatement.setString(1, user.getUserProfile().getFirstName());
-				preparedStatement.setString(2, user.getUserProfile().getLastName());
-				preparedStatement.setString(3, user.getUserProfile().getEmail());
-				preparedStatement.setString(4, user.getUserProfile().getPassportSeria());
-				preparedStatement.setInt(5, user.getId());
-				preparedStatement.setInt(6, ((UserProfileClient) user.getUserProfile()).getBankAccount().getId());
+			if (userProfile instanceof UserProfileClient) {
 
-			} else if (user.getUserProfile() instanceof UserProfileAdmin) {
+				// Client user
+				preparedStatement.setInt(QUERY_POSITION_ID_BANK_ACCOUNT,
+						((UserProfileClient) user.getUserProfile()).getBankAccount().getId());
 
-				// Refactor check the null at the admin
+			} else if (userProfile instanceof UserProfileAdmin) {
 
-				preparedStatement.setString(1, user.getUserProfile().getFirstName());
-				preparedStatement.setString(2, user.getUserProfile().getLastName());
-				preparedStatement.setString(3, user.getUserProfile().getEmail());
-				preparedStatement.setString(4, user.getUserProfile().getPassportSeria());
-				preparedStatement.setInt(5, user.getId());
-				preparedStatement.setNull(6, java.sql.Types.INTEGER);
+				// Admin user
+				preparedStatement.setNull(QUERY_POSITION_ID_BANK_ACCOUNT, java.sql.Types.NULL);
 			}
-
-			preparedStatement.setInt(QUERY_POSITION_ID_USER, user.getId());
 
 			preparedStatement.executeUpdate();
 

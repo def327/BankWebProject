@@ -36,27 +36,27 @@ public class BankWebAppRunner {
 		
 		DaoBehaviorUserProfile dao = new DaoUserProfile();
 		
-		UserProfile profile = dao.getUserProfile(6);
+		UserProfileClient userProfile = new UserProfileClient();
 		
-		if(profile == null){
-			System.out.println("Empty!");
-		}else{
+		userProfile.setFirstName("Mansky");
+		userProfile.setLastName("Stansky");
+		userProfile.setEmail("mano@gmail.com");
+		userProfile.setPassportSeria("MP2553322");
+		
+		int userId = 5;
+		int bankAccount = 4;
+		
+		User user = new User();
+		
+		user.setId(userId);
+		user.setUserProfile(userProfile);
+		
+		userProfile.setBankAccount(new BankAccount());
+		userProfile.getBankAccount().setId(bankAccount);
+		
+		
+		dao.addNewUserProfile(user,userProfile);
 			
-			System.out.println(profile.getId());
-			System.out.println(profile.getFirstName());
-			System.out.println(profile.getLastName());
-			System.out.println(profile.getPassportSeria());
-			System.out.println(profile.getEmail());
-			
-			if(profile instanceof UserProfileClient){
-				
-				UserProfileClient clientProfile = (UserProfileClient)profile;
-				
-				System.out.println(clientProfile.getBankAccount().getId() + " - bank account");
-				
-			}
-			
-		}
 
 		DataBaseManager.getInstance().closeDataBaseManager();
 	}

@@ -31,11 +31,13 @@ public interface DaoBehaviorUserProfile {
 	 * Adds an {@code UserProfile} object to a datasource.
 	 * 
 	 * @param user
-	 *            An {@code User} object, that contains this {@code UserProfile}
-	 *            object.
+	 *            An {@code User} object
+	 * 
+	 * @param userProfile
+	 *            An {@code UserProfile} object to add
 	 * 
 	 * @throws DaoException
 	 */
-	void addNewUserProfile(User user) throws DaoException;
+	void addNewUserProfile(User user, UserProfile userProfile) throws DaoException;
 
 }
