@@ -20,11 +20,14 @@ public interface DaoBehaviorUserProfile {
 	 * @param userId
 	 *            An unique ID of the {@code User} object to get
 	 * 
+	 * @param authorityTypeId
+	 *            A unique ID of an {@code AuthorityType} object
+	 * 
 	 * @return An {@code UserProfile} object from a datasource
 	 * 
 	 * @throws DaoException
 	 */
-	UserProfile getUserProfile(int userId) throws DaoException;
+	UserProfile getUserProfile(int userId, int authorityTypeId) throws DaoException;
 
 	/**
 	 * Adds an {@code UserProfile} object to a datasource.

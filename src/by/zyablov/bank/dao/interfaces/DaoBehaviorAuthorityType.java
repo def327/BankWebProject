@@ -15,13 +15,13 @@ public interface DaoBehaviorAuthorityType {
 	/**
 	 * Return's an {@code AuthorityType} object from a datasource.
 	 * 
-	 * @param authorityTypeUniqueId
+	 * @param authorityTypeId
 	 *            A unique ID of an {@code AuthorityType} object to get
 	 * 
 	 * @return An {@code AuthorityType} object from a datasource
 	 * 
 	 * @throws DaoException
 	 */
-	AuthorityType getAuthorityTypeById(int authorityTypeUniqueId) throws DaoException;
+	AuthorityType getAuthorityTypeById(int authorityTypeId) throws DaoException;
 
 }

@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import by.zyablov.bank.beans.BankAccount;
-import by.zyablov.bank.beans.User;
 import by.zyablov.bank.beans.UserProfile;
 import by.zyablov.bank.beans.UserProfileAdmin;
 import by.zyablov.bank.beans.UserProfileClient;
@@ -31,7 +29,7 @@ public class DaoUserProfile extends DaoAbstract implements DaoBehaviorUserProfil
 	 * the {@code User} object.
 	 */
 	@Override
-	public UserProfile getUserProfile(int userId) throws DaoException {
+	public UserProfile getUserProfile(int userId, int authorityTypeId) throws DaoException {
 
 		/**
 		 * A position of an unique ID of the {@code User} object in prepared SQL
@@ -70,16 +68,14 @@ public class DaoUserProfile extends DaoAbstract implements DaoBehaviorUserProfil
 		final int PASSPORT_SERIA = 5;
 
 		/**
-		 * Database answer field index of an unique bank account ID for a
-		 * {@code BankAccount} object from database.
+		 * This value indicates that it's a profile of the client user.
 		 */
-		final int ID_BANK_ACCOUNT = 7;
+		final int CLIENT_USER_PROFILE = 1;
 
 		/**
-		 * This value indicates that a field 'id_bank_account' is NULL at the
-		 * database, means it's a profile of the admin.
+		 * This value indicates that it's a profile of the admin user.
 		 */
-		final int ADMIN_PROFILE_INDICATOR = 0;
+		final int ADMIN_USER_PROFILE = 2;
 
 		UserProfile userProfileObjectFromDataBase = null;
 
@@ -99,42 +95,27 @@ public class DaoUserProfile extends DaoAbstract implements DaoBehaviorUserProfil
 
 			if (result.next()) {
 
-				// Admin profile
-				if (result.getInt(ID_BANK_ACCOUNT) == ADMIN_PROFILE_INDICATOR) {
+				switch (authorityTypeId) {
 
-					UserProfileAdmin resultUserProfileObjectFromDataBase = new UserProfileAdmin();
-
-					do {
-
-						resultUserProfileObjectFromDataBase.setId(result.getInt(ID_USER_PROFILE));
-						resultUserProfileObjectFromDataBase.setFirstName(result.getString(FIRST_NAME));
-						resultUserProfileObjectFromDataBase.setLastName(result.getString(LAST_NAME));
-						resultUserProfileObjectFromDataBase.setEmail(result.getString(EMAIL));
-						resultUserProfileObjectFromDataBase.setPassportSeria(result.getString(PASSPORT_SERIA));
-
-						userProfileObjectFromDataBase = resultUserProfileObjectFromDataBase;
-
-					} while (result.next());
-
-				} else {
-
-					// Client profile
+				case CLIENT_USER_PROFILE: {
 
 					UserProfileClient resultUserProfileObjectFromDataBase = new UserProfileClient();
 
-					do {
+					userProfileObjectFromDataBase = initUserProfile(ID_USER_PROFILE, FIRST_NAME, LAST_NAME, EMAIL,
+							PASSPORT_SERIA, result, resultUserProfileObjectFromDataBase);
 
-						resultUserProfileObjectFromDataBase.setId(result.getInt(ID_USER_PROFILE));
-						resultUserProfileObjectFromDataBase.setFirstName(result.getString(FIRST_NAME));
-						resultUserProfileObjectFromDataBase.setLastName(result.getString(LAST_NAME));
-						resultUserProfileObjectFromDataBase.setEmail(result.getString(EMAIL));
-						resultUserProfileObjectFromDataBase.setPassportSeria(result.getString(PASSPORT_SERIA));
-						resultUserProfileObjectFromDataBase.setBankAccount(new BankAccount());
-						resultUserProfileObjectFromDataBase.getBankAccount().setId(result.getInt(ID_BANK_ACCOUNT));
+					break;
+				}
 
-						userProfileObjectFromDataBase = resultUserProfileObjectFromDataBase;
+				case ADMIN_USER_PROFILE: {
 
-					} while (result.next());
+					UserProfileAdmin resultUserProfileObjectFromDataBase = new UserProfileAdmin();
+
+					userProfileObjectFromDataBase = initUserProfile(ID_USER_PROFILE, FIRST_NAME, LAST_NAME, EMAIL,
+							PASSPORT_SERIA, result, resultUserProfileObjectFromDataBase);
+
+					break;
+				}
 
 				}
 
@@ -187,6 +168,61 @@ public class DaoUserProfile extends DaoAbstract implements DaoBehaviorUserProfil
 	}
 
 	/**
+	 * Initializes a {@code UserProfile} object data fields from database.
+	 * 
+	 * @param indexPositionId
+	 *            An index postion in a result set from the database of the
+	 *            unique ID for {@code UserProfile} object.
+	 * 
+	 * @param indexPositionFirstName
+	 *            An index postion in a result set from the database of the
+	 *            first name for {@code UserProfile} object.
+	 * 
+	 * @param indexPositionLastName
+	 *            An index postion in a result set from the database of the last
+	 *            name for {@code UserProfile} object.
+	 * 
+	 * @param indexPositionEmail
+	 *            An index postion in a result set from the database of the
+	 *            email for {@code UserProfile} object.
+	 * 
+	 * @param indexPositionPassportSeria
+	 *            An index postion in a result set from the database of the
+	 *            passport seria for {@code UserProfile} object.
+	 * 
+	 * @param requestResult
+	 *            A {@code ResultSet} object, which is received after the SQL
+	 *            request execution
+	 * 
+	 * @param noInitializedUserProfile
+	 *            An {@code UserProfile} object to initialize
+	 * 
+	 * @return An {@code UserProfile} object
+	 * 
+	 * @throws SQLException
+	 */
+	private UserProfile initUserProfile(final int indexPositionId, final int indexPositionFirstName,
+			final int indexPositionLastName, final int indexPositionEmail, final int indexPositionPassportSeria,
+			ResultSet requestResult, UserProfile noInitializedUserProfile) throws SQLException {
+
+		UserProfile userProfileObjectFromDataBase;
+
+		do {
+
+			noInitializedUserProfile.setId(requestResult.getInt(indexPositionId));
+			noInitializedUserProfile.setFirstName(requestResult.getString(indexPositionFirstName));
+			noInitializedUserProfile.setLastName(requestResult.getString(indexPositionLastName));
+			noInitializedUserProfile.setEmail(requestResult.getString(indexPositionEmail));
+			noInitializedUserProfile.setPassportSeria(requestResult.getString(indexPositionPassportSeria));
+
+			userProfileObjectFromDataBase = noInitializedUserProfile;
+
+		} while (requestResult.next());
+
+		return userProfileObjectFromDataBase;
+	}
+
+	/**
 	 * Adds a new {@code UserProfile} object to to a database.
 	 */
 	@Override
@@ -222,12 +258,6 @@ public class DaoUserProfile extends DaoAbstract implements DaoBehaviorUserProfil
 		 */
 		final int QUERY_POSITION_USER_ID = 5;
 
-		/**
-		 * A position of unique ID for a {@code BankAccount} object in prepared
-		 * SQL request.
-		 */
-		final int QUERY_POSITION_ID_BANK_ACCOUNT = 6;
-
 		Connection connectionToDataBase = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet result = null;
@@ -243,19 +273,7 @@ public class DaoUserProfile extends DaoAbstract implements DaoBehaviorUserProfil
 			preparedStatement.setString(QUERY_POSITION_LAST_NAME, userProfile.getLastName());
 			preparedStatement.setString(QUERY_POSITION_EMAIL, userProfile.getEmail());
 			preparedStatement.setString(QUERY_POSITION_PASSPORT_SERIA, userProfile.getPassportSeria());
-			preparedStatement.setInt(QUERY_POSITION_USER_ID, user.getId());
-
-			if (userProfile instanceof UserProfileClient) {
-
-				// Client user
-				preparedStatement.setInt(QUERY_POSITION_ID_BANK_ACCOUNT,
-						((UserProfileClient) user.getUserProfile()).getBankAccount().getId());
-
-			} else if (userProfile instanceof UserProfileAdmin) {
-
-				// Admin user
-				preparedStatement.setNull(QUERY_POSITION_ID_BANK_ACCOUNT, java.sql.Types.NULL);
-			}
+			preparedStatement.setInt(QUERY_POSITION_USER_ID, userId);
 
 			preparedStatement.executeUpdate();
 
