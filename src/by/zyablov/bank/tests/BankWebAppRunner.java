@@ -34,30 +34,19 @@ public class BankWebAppRunner {
 
 	public static void main(String[] args) throws SQLException, DaoException {
 		
-		DaoBehaviorUserProfile dao = new DaoUserProfile();
-		
-		UserProfileClient userProfile = new UserProfileClient();
-		
-		userProfile.setFirstName("Mansky");
-		userProfile.setLastName("Stansky");
-		userProfile.setEmail("mano@gmail.com");
-		userProfile.setPassportSeria("MP2553322");
-		
-		int userId = 5;
-		int bankAccount = 4;
-		
-		User user = new User();
-		
-		user.setId(userId);
-		user.setUserProfile(userProfile);
-		
-		userProfile.setBankAccount(new BankAccount());
-		userProfile.getBankAccount().setId(bankAccount);
+		try{
+		DaoBehaviorBankAccount dao = new DaoBankAccount();
 		
 		
-		dao.addNewUserProfile(user,userProfile);
+	    dao.addNewBankAccount(5, 300, 1);
 			
+	
+		}catch(DaoException e){
 
+			e.printStackTrace();
+			
+		}finally{
 		DataBaseManager.getInstance().closeDataBaseManager();
+		}
 	}
 }

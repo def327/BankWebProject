@@ -26,16 +26,17 @@ import by.zyablov.bank.exceptions.DaoException;
 public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccount {
 
 	/**
-	 * Returns a {@code BankAccount} object by from a database by its unique ID.
+	 * Returns a {@code BankAccount} object by from a database by unique ID of a
+	 * {@code UserProfile} object .
 	 */
 	@Override
-	public BankAccount getBankAccountById(int bankAccountId) throws DaoException {
+	public BankAccount getBankAccountById(int userProfileId) throws DaoException {
 
 		/**
-		 * A position of unique ID for a {@code BankAccount} object in prepared
+		 * A position of unique ID of a {@code UserProfile} object in prepared
 		 * SQL request.
 		 */
-		final int QUERY_POSITION_ID_BANK_ACCOUNT = 1;
+		final int QUERY_POSITION_ID_USER_PROFILE = 1;
 
 		/**
 		 * Database answer field index of an unique ID for a {@code BankAccount}
@@ -68,7 +69,7 @@ public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccoun
 			preparedStatement = connectionToDataBase
 					.prepareStatement(super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_GET_BANK_ACCOUNT));
 
-			preparedStatement.setInt(QUERY_POSITION_ID_BANK_ACCOUNT, bankAccountId);
+			preparedStatement.setInt(QUERY_POSITION_ID_USER_PROFILE, userProfileId);
 
 			result = preparedStatement.executeQuery();
 
@@ -138,7 +139,8 @@ public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccoun
 	 * Adds a new {@code BankAccount} object to a database.
 	 */
 	@Override
-	public void addNewBankAccount(int bankAccountMoneyBalance, int bankAccountStateId) throws DaoException {
+	public void addNewBankAccount(int userProfileId, int bankAccountMoneyBalance, int bankAccountStateId)
+			throws DaoException {
 
 		/**
 		 * A position of an current money balance of a {@code BankAccount}
@@ -151,6 +153,12 @@ public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccoun
 		 * {@code BankAccount} object in prepared SQL request.
 		 */
 		final int QUERY_POSITION_ID_BANK_ACCOUNT_STATE = 2;
+
+		/**
+		 * A position of unique ID of a {@code UserProfile} object in prepared
+		 * SQL request.
+		 */
+		final int QUERY_POSITION_ID_USER_PROFILE = 3;
 
 		Connection connectionToDataBase = null;
 		PreparedStatement preparedStatement = null;
@@ -165,6 +173,7 @@ public class DaoBankAccount extends DaoAbstract implements DaoBehaviorBankAccoun
 
 			preparedStatement.setInt(QUERY_POSITION_CURRENT_BALANCE, bankAccountMoneyBalance);
 			preparedStatement.setInt(QUERY_POSITION_ID_BANK_ACCOUNT_STATE, bankAccountStateId);
+			preparedStatement.setInt(QUERY_POSITION_ID_USER_PROFILE, userProfileId);
 
 			preparedStatement.executeUpdate();
 

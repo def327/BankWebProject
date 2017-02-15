@@ -16,17 +16,20 @@ public interface DaoBehaviorBankAccount {
 	/**
 	 * Return's an {@code BankAccount} object from a datasource.
 	 * 
-	 * @param bankAccountId
-	 *            A unique ID of an {@code BankAccount} object to get
+	 * @param userProfileId
+	 *            A unique ID of an {@code UserProfile} object 
 	 * 
 	 * @return An {@code BankAccount} object from a datasource
 	 * 
 	 * @throws DaoException
 	 */
-	BankAccount getBankAccountById(int bankAccountId) throws DaoException;
+	BankAccount getBankAccountById(int userProfileId) throws DaoException;
 
 	/**
 	 * Adds an {@code BankAccount} object to a datasource.
+	 * 
+	 * @param userProfileId
+	 *            A unique ID of an {@code UserProfile} object
 	 * 
 	 * @param bankAccountMoneyBalance
 	 *            A money balance for a {@code BankAccount} object
@@ -36,7 +39,7 @@ public interface DaoBehaviorBankAccount {
 	 * 
 	 * @throws DaoException
 	 */
-	void addNewBankAccount(int bankAccountMoneyBalance, int bankAccountStateId) throws DaoException;
+	void addNewBankAccount(int userProfileId, int bankAccountMoneyBalance, int bankAccountStateId) throws DaoException;
 
 	/**
 	 * Updates an {@code BankAccount} object current money balance at the
@@ -68,3 +71,4 @@ public interface DaoBehaviorBankAccount {
 	void updateBankAccountStateId(int bankAccountId, int bankAccountStateId) throws DaoException;
 
 }
+

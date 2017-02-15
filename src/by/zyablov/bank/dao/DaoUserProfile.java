@@ -190,7 +190,7 @@ public class DaoUserProfile extends DaoAbstract implements DaoBehaviorUserProfil
 	 * Adds a new {@code UserProfile} object to to a database.
 	 */
 	@Override
-	public void addNewUserProfile(User user, UserProfile userProfile) throws DaoException {
+	public void addNewUserProfile(int userId, UserProfile userProfile) throws DaoException {
 
 		/**
 		 * A position of a first name for the {@code UserProfile} object in

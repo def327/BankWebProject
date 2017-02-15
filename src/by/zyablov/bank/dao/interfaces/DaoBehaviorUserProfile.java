@@ -1,6 +1,5 @@
 package by.zyablov.bank.dao.interfaces;
 
-import by.zyablov.bank.beans.User;
 import by.zyablov.bank.beans.UserProfile;
 import by.zyablov.bank.exceptions.DaoException;
 
@@ -30,14 +29,14 @@ public interface DaoBehaviorUserProfile {
 	/**
 	 * Adds an {@code UserProfile} object to a datasource.
 	 * 
-	 * @param user
-	 *            An {@code User} object
+	 * @param userId
+	 *            An unique ID of an {@code User} object
 	 * 
 	 * @param userProfile
 	 *            An {@code UserProfile} object to add
 	 * 
 	 * @throws DaoException
 	 */
-	void addNewUserProfile(User user, UserProfile userProfile) throws DaoException;
+	void addNewUserProfile(int userId, UserProfile userProfile) throws DaoException;
 
 }
