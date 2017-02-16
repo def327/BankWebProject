@@ -9,9 +9,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 /**
- * EncodingFilter intercept all user http request to configurate content to
- * <b>'UTF-8'</b> encode at {@code ServletRequest} and {@code ServletResponse }
- * objects and passes these to the next filter.
+ * {@code EncodingFilter} intercepts user's http requests to configurate content
+ * to <b>'UTF-8'</b> encode at {@code ServletRequest} and
+ * {@code ServletResponse } objects and passes these to the next filter.
  * 
  * 
  */
@@ -35,18 +35,13 @@ public class EncodingFilter implements Filter {
 	}
 
 	/**
-	 * Configurates encode.
+	 * Configurates an encode.
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		String encodeRequest = request.getCharacterEncoding();
-
-		if (encodeRequest != null && !encodeRequest.equalsIgnoreCase(webAppEncode)) {
-
-			request.setCharacterEncoding(webAppEncode);
-			response.setCharacterEncoding(webAppEncode);
-		}
+		request.setCharacterEncoding(webAppEncode);
+		response.setCharacterEncoding(webAppEncode);
 
 		chain.doFilter(request, response);
 	}
