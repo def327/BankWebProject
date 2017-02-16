@@ -5,7 +5,7 @@
 <head>
 </head>
 <body>
-	<form name="registForm" method="POST" action="RegistryController">
+	<form name="registForm" method="POST" action="MoveToRegistryController">
 		<label for="regitryForm">Create Account</label> <input
 			name="regitryForm" type="submit" value="Enter">
 	</form>

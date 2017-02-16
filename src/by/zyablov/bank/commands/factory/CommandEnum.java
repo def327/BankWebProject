@@ -84,7 +84,7 @@ public enum CommandEnum {
 	/**
 	 * Returns a command to execute.
 	 */
-	public CommandBehavior getCurrentCommand() {
+	public CommandBehavior getCommand() {
 		return command;
 	}
 

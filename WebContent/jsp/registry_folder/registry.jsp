@@ -3,11 +3,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Registration</title>
+    <title>Registration blank</title>
 </head>
   <body>
-  <h1>Регистрация!!!</h1>
-    <!-- form class="contact_form" action="" method="post" name="contact_form">
+  <h1>Registration blank:</h1>
+    <form class="contact_form" action="" method="post" name="contact_form">
       <ul>
         <li>
           <h2>Contact Us</h2>
@@ -35,6 +35,6 @@
           <button class="submit" type="submit">Submit Form</button>
         </li>
       </ul>
-    </form -->
+    </form>
   </body>
 </html>

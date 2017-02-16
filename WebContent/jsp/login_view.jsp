@@ -11,8 +11,8 @@
 				value="">
 		</p>
 		<p>
-			<label for="password">Password</label> <input type="password"
-				name="password">
+			<label for="password">Password</label>
+			<input type="password" name="password" value="" />
 		</p>
 		<p>
 			<label for="submit">Enter account</label> <input type="submit"

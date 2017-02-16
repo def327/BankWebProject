@@ -7,11 +7,6 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import by.zyablov.bank.commands.CommandBehavior;
-import by.zyablov.bank.commands.factory.CommandEnum;
 
 /**
  * {@code AutorizeSecurityFilter} intercepts user's http requests to check
@@ -25,6 +20,8 @@ public class AutorizeSecurityFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
+		System.out.println("Authorize Filter in action!");
+		
 		checkAuthorization(request, response);
 
 		chain.doFilter(request, response);
