@@ -74,6 +74,12 @@ public enum CommandEnum {
 		{
 			this.command = new CommandUserLogout();
 		}
+	},
+
+	USER_MOVE_REGISTRY_PAGE {
+		{
+			this.command = new CommandUserMoveToRegistryPage();
+		}
 	};
 
 	/**
