@@ -12,9 +12,6 @@ package by.zyablov.bank.beans;
  */
 public abstract class UserProfile extends Entity {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1843129991218926585L;
 
 	/**
@@ -36,30 +33,6 @@ public abstract class UserProfile extends Entity {
 	 * A user's unique passport seria.
 	 */
 	private String passportSeria;
-
-	/**
-	 * Constructs an <code>UserProfile</code> object based on first name, last
-	 * name, email and passport seria of user.
-	 * 
-	 * 
-	 * @param firstName
-	 *            A user's name
-	 * 
-	 * @param lastName
-	 *            A user's surname
-	 * 
-	 * @param email
-	 *            A user's email
-	 * 
-	 * @param passportSeria
-	 *            A user's unique passport seria
-	 */
-	public UserProfile(String firstName, String lastName, String email, String passportSeria) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.passportSeria = passportSeria;
-	}
 
 	/**
 	 * Constructs a default <code>UserProfile</code>.

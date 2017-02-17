@@ -11,11 +11,6 @@ package by.zyablov.bank.beans;
  */
 public class User extends Entity {
 
-
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4025542135365903606L;
 
 	/**
@@ -41,34 +36,9 @@ public class User extends Entity {
 	private UserProfile userProfile;
 
 	/**
-	 * 
-	 * Constructs a <code>User</code> based on login, password for
-	 * authorization, type of authority role and {@code UserProfile} object.
-	 * 
-	 * @param login
-	 *            An unique login for a user to authorize
-	 * 
-	 * @param password
-	 *            A sercret password to verife user
-	 * 
-	 * @param authorityType
-	 *            A type of user's authority role
-	 * 
-	 * @param userProfile
-	 *            A unique user's data
-	 */
-	public User(String login, String password, AuthorityType authorityType, UserProfile userProfile) {
-		this.login = login;
-		this.password = password;
-		this.authorityType = authorityType;
-		this.userProfile = userProfile;
-	}
-
-	/**
 	 * Constructs a default <code>User</code>.
 	 */
 	public User() {
-		super();
 	}
 
 	/**

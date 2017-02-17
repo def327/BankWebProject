@@ -14,9 +14,6 @@ import java.util.List;
  */
 public class BankAccount extends Entity {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 9055818037370851914L;
 
 	/**
@@ -30,32 +27,15 @@ public class BankAccount extends Entity {
 	private BankAccountState bankAccountState;
 
 	/**
-	 * A current balance of the bank account. 
+	 * A current balance of the bank account.
 	 */
 	private int currentBalance;
-	
+
 	/**
 	 * Constructs a default <code>BankAccount</code>.
 	 */
 	public BankAccount() {
 		listOfCreditCards = new LinkedList<>();
-	}
-
-	/**
-	 * Constructs an <code>BankAccount</code> object based on list of
-	 * {@code CreditCard} objects and a working status state of the bank
-	 * account.
-	 * 
-	 * 
-	 * @param listOfCreditCards
-	 *            A list of {@code CreditCard} objects
-	 * 
-	 * @param bankAccountState
-	 *            A a working status state of the bank account
-	 */
-	public BankAccount(List<CreditCard> listOfCreditCards, BankAccountState bankAccountState) {
-		this.listOfCreditCards = listOfCreditCards;
-		this.bankAccountState = bankAccountState;
 	}
 
 	/**
@@ -96,7 +76,8 @@ public class BankAccount extends Entity {
 	}
 
 	/**
-	 * @param currentBalance the currentBalance to set
+	 * @param currentBalance
+	 *            the currentBalance to set
 	 */
 	public void setCurrentBalance(int currentBalance) {
 		this.currentBalance = currentBalance;

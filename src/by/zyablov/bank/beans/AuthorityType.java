@@ -13,9 +13,6 @@ package by.zyablov.bank.beans;
  */
 public class AuthorityType extends Entity {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7157581215173089418L;
 	
 	/**
@@ -23,15 +20,6 @@ public class AuthorityType extends Entity {
 	 */
 	private String authorityTypeTitle;
 
-	/**
-	 * Constructs a <code>AuthorityType</code> based on authority type title.
-	 * 
-	 * @param authorityTypeTitle
-	 *            A title for authority type
-	 */
-	public AuthorityType(String authorityTypeTitle) {
-		this.authorityTypeTitle = authorityTypeTitle;
-	}
 
 	/**
 	 * Constructs a default <code>AuthorityType</code>.
