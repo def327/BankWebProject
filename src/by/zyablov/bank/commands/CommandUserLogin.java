@@ -7,6 +7,7 @@ import by.zyablov.bank.dao.DaoUser;
 import by.zyablov.bank.dao.interfaces.DaoBehaviorUser;
 import by.zyablov.bank.exceptions.DaoException;
 
+
 public class CommandUserLogin implements CommandBehavior {
 
 	private static final String PARAM_NAME_LOGIN = "login";

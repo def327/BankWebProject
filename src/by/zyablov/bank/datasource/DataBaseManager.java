@@ -62,7 +62,7 @@ public class DataBaseManager implements DataSourceBehavior {
 	/**
 	 * A name of path to XML file document.
 	 */
-	private static final String PATH_TO_XML_FILE = "config_xml/db_config/config.xml";
+	private static final String PATH_TO_XML_FILE = "config.xml";
 
 	/**
 	 * HikariCP pooled data source.
@@ -94,8 +94,8 @@ public class DataBaseManager implements DataSourceBehavior {
 	/**
 	 * Return's a proxy connection to database.
 	 * 
-	 * <p><i>
-	 * When you call method {@link Connection#close() close()} - a proxy
+	 * <p>
+	 * <i> When you call method {@link Connection#close() close()} - a proxy
 	 * connection returns to connection pool.</i>
 	 */
 	@Override

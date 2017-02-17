@@ -18,10 +18,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.40-bin.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-api-1.6.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-simple-1.6.2.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/HikariCP_Lib/HikariCP-2.6.0.jar" sourcepath="WebContent/WEB-INF/lib/HikariCP_Lib/HikariCP-java7-2.4.11-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/WebBankProject/WebContent/WEB-INF/lib/HikariCP_Lib/HikariCP-java7-2.4.11-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/HikariCP-2.6.0.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

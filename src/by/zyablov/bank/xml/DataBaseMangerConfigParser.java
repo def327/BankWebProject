@@ -1,9 +1,7 @@
 package by.zyablov.bank.xml;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -13,8 +11,8 @@ import javax.xml.stream.XMLStreamReader;
 import by.zyablov.bank.datasource.DataBaseManager;
 
 /**
- * Class {@code DataBaseMangerConfigParser} has methods to parse a xml file with a
- * configurations for {@code DataBaseManager}.
+ * Class {@code DataBaseMangerConfigParser} has methods to parse a xml file with
+ * a configurations for {@code DataBaseManager}.
  * 
  * @author Дмитрий
  *
@@ -59,12 +57,13 @@ public class DataBaseMangerConfigParser {
 	 *            - a path to xml file.
 	 */
 	private void buildConfig(String fileName) {
-		FileInputStream inputStream = null;
+		InputStream inputStream = null;
 		XMLStreamReader reader = null;
 		String name;
 
 		try {
-			inputStream = new FileInputStream(new File(fileName));
+
+			inputStream = this.getClass().getClassLoader().getResourceAsStream(fileName);
 			reader = inputFactory.createXMLStreamReader(inputStream);
 
 			// StaX parsing
@@ -78,16 +77,17 @@ public class DataBaseMangerConfigParser {
 					}
 				}
 			}
-		} catch (FileNotFoundException e) {
-			System.err.println("File " + fileName + " not found! " + e);
 
 		} catch (XMLStreamException e) {
 			System.err.println("StAX parsing error! " + e.getMessage());
+
 		} finally {
+
 			try {
 				if (inputStream != null) {
 					inputStream.close();
 				}
+
 			} catch (IOException e) {
 				System.err.println("Impossible close file " + fileName + ": " + e);
 			}
