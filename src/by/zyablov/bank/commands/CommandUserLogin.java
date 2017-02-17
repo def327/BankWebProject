@@ -1,12 +1,15 @@
 package by.zyablov.bank.commands;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import by.zyablov.bank.beans.User;
 import by.zyablov.bank.dao.DaoUser;
 import by.zyablov.bank.dao.interfaces.DaoBehaviorUser;
 import by.zyablov.bank.exceptions.DaoException;
 import static by.zyablov.bank.constants.UserTypesAuthority.*;
+import static by.zyablov.bank.constants.BeansAttributesName.*;
+import static by.zyablov.bank.constants.PathPage.*;
 
 /**
  * {@code CommandUserLogin} provides methods to allow user to authorize at the
@@ -26,18 +29,6 @@ public class CommandUserLogin implements CommandBehavior {
 	 * Name of the parametr to get user's password.
 	 */
 	private static final String PARAM_NAME_PASSWORD = "password";
-
-	/**
-	 * A page for registered user client.
-	 */
-	private static final String USER_CLIENT_PAGE = "/jsp/client_folder/client.jsp";
-
-	/**
-	 * A page for registered user admin.
-	 */
-	private static final String USER_ADMIN_PAGE = "/jsp/admin_folder/admin.jsp";
-
-	private static final String USER_MAIN_PAGE = "/jsp/main.jsp";
 
 	/**
 	 * Exceutes login command.
@@ -60,7 +51,16 @@ public class CommandUserLogin implements CommandBehavior {
 
 				if (authenticationStatus) {
 
-					// TODO set User object(login) in http response
+					// TODO set User object(login) in http request
+
+					/*--*/
+					HttpSession session = request.getSession(true);
+					session.setAttribute(ATTRIBUTE_ID_USER, userFromDataSource.getId());
+					session.setAttribute(ATTRIBUTE_LOGIN, userFromDataSource.getLogin());
+					session.setAttribute(ATTRIBUTE_PASSWORD, userFromDataSource.getPassword());
+					session.setAttribute(ATTRIBUTE_ID_AUTHORITY_TYPE, userFromDataSource.getAuthorityType().getId());
+
+					/*--*/
 
 					return getPageByUserAuthorityType(userFromDataSource);
 
