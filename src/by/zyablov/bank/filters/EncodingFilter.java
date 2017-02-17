@@ -43,6 +43,7 @@ public class EncodingFilter implements Filter {
 		request.setCharacterEncoding(webAppEncode);
 		response.setCharacterEncoding(webAppEncode);
 		
+		//TODO Delete sout in console
 		System.out.println("Encode Filter in action : set encode = " + request.getCharacterEncoding());
 
 		chain.doFilter(request, response);

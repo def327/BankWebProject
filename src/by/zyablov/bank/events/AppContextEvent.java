@@ -21,9 +21,7 @@ public class AppContextEvent implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
 
-		// Logging initializing of resources
-
-		System.out.println("Init context!");
+		//TODO Logging initializing of resources
 		
 		DataBaseManager.getInstance();
 		ManagerSQL.getInstance();
@@ -36,9 +34,7 @@ public class AppContextEvent implements ServletContextListener {
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
 
-		// Logging -- free the resources
-
-		System.out.println("Desotroy context!");
+		//TODO Logging -- free the resources
 		
 		DataBaseManager.getInstance().closeDataBaseManager();
 		ManagerSQL.getInstance().closeManagerSql();

@@ -20,6 +20,7 @@ public class AutorizeSecurityFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
+		//TODO Delete sout in console
 		System.out.println("Authorize Filter in action!");
 		
 		checkAuthorization(request, response);
