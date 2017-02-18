@@ -2,6 +2,7 @@ package by.zyablov.bank.commands.factory;
 
 import by.zyablov.bank.commands.*;
 
+
 /**
  * Enum {@code CommandEnum} represents types of command to execute.
  * 
@@ -79,6 +80,12 @@ public enum CommandEnum {
 	USER_MOVE_REGISTRY_PAGE {
 		{
 			this.command = new CommandUserMoveToRegistryPage();
+		}
+	},
+
+	USER_CLIENT_REGISTER_NEW_USER {
+		{
+			this.command = new CommandUserClientRigisterNewUser();
 		}
 	};
 

@@ -21,38 +21,52 @@
 		</div>
 		<div class="col-xs-4">
 			<form role="form" name="registryForm" method="POST"
-				action="!!!!!--Controller">
+				action="SignUpController">
 				<div class="form-group">
 					<label for="firstName">First name:</label> <input type="text"
-						class="form-control" name="firstName" placeholder="John" required />
+						class="form-control" name="firstName" placeholder="John"
+						pattern="[A-Z][a-z]{3,}" maxlength="14" required />
 				</div>
 				<div class="form-group">
 					<label for="lastName">Last name:</label> <input type="text"
-						class="form-control" name="lastName" placeholder="Jonson" required />
+						class="form-control" name="lastName" placeholder="Jonson"
+						pattern="[A-Z][a-z]{3,}" maxlength="14" required />
 				</div>
+
+
 				<div class="form-group">
 					<label for="email">Email:</label> <input type="email"
 						class="form-control" name="email" placeholder="john98@gmail.com"
-						required />
+						maxlength="30" required />
 				</div>
 				<div class="form-group">
 					<label for="passportSeria">Passport seria:</label> <input
 						type="text" class="form-control" name="passportSeria"
-						placeholder="MP2346421" required />
+						placeholder="MP2346421" pattern="[A-Z][A-Z][0-9]{7}" maxlength="9"
+						required />
 				</div>
+
+
+
 				<div class="form-group">
 					<label for="login">Login:</label> <input type="text"
-						class="form-control" name="login" required />
+						class="form-control" name="login" pattern="^[a-z0-9_-]{3,9}$"
+						maxlength="9" required />
 				</div>
 				<div class="form-group">
 					<label for="password">Password:</label> <input type="password"
-						class="form-control" name="password" required />
+						class="form-control" name="password" maxlength="10" required />
 				</div>
 				<div class="form-group">
-					<label for="password">Retype Password :</label> <input type="text"
-						class="form-control" name="password" required />
+					<label for="retypePassword">Retype Password :</label> <input
+						type="password" class="form-control" name="retypePassword"
+						maxlength="10" required />
 				</div>
+
 				<button type="submit" class="btn btn-success">Submit</button>
+
+
+
 			</form>
 		</div>
 	</div>

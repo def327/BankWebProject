@@ -3,11 +3,9 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
-
 	<listener>
 		<listener-class>by.zyablov.bank.events.AppContextEvent</listener-class>
 	</listener>
-
 	<display-name>BankWebProject</display-name>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
@@ -44,6 +42,7 @@
 		<dispatcher>INCLUDE</dispatcher>
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
+	
 	<servlet>
 		<servlet-name>LoginController</servlet-name>
 		<servlet-class>by.zyablov.bank.controllers.LoginController</servlet-class>
@@ -64,4 +63,14 @@
 		<url-pattern>/MoveToRegistryController</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>SignUpController</servlet-name>
+		<servlet-class>by.zyablov.bank.controllers.SignUpController</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SignUpController</servlet-name>
+		<url-pattern>/SignUpController</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

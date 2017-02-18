@@ -21,23 +21,13 @@ import static by.zyablov.bank.constants.PathPage.*;
 public class CommandUserLogin implements CommandBehavior {
 
 	/**
-	 * Name of the parametr to get user's login.
-	 */
-	private static final String PARAM_NAME_LOGIN = "login";
-
-	/**
-	 * Name of the parametr to get user's password.
-	 */
-	private static final String PARAM_NAME_PASSWORD = "password";
-
-	/**
 	 * Exceutes login command.
 	 */
 	@Override
 	public String execute(HttpServletRequest request) {
 
-		String loginUserToCheck = request.getParameter(PARAM_NAME_LOGIN);
-		String passwordUserToCheck = request.getParameter(PARAM_NAME_PASSWORD);
+		String loginUserToCheck = request.getParameter(ATTRIBUTE_LOGIN);
+		String passwordUserToCheck = request.getParameter(ATTRIBUTE_PASSWORD);
 
 		DaoBehaviorUser dao = new DaoUser();
 
@@ -54,15 +44,19 @@ public class CommandUserLogin implements CommandBehavior {
 					// TODO set User object(login) in http request
 
 					/*--*/
-//					HttpSession session = request.getSession(true);
-//					session.setAttribute(ATTRIBUTE_ID_USER, userFromDataSource.getId());
-//					session.setAttribute(ATTRIBUTE_LOGIN, userFromDataSource.getLogin());
-//					session.setAttribute(ATTRIBUTE_PASSWORD, userFromDataSource.getPassword());
-//					session.setAttribute(ATTRIBUTE_ID_AUTHORITY_TYPE, userFromDataSource.getAuthorityType().getId());
+					// HttpSession session = request.getSession(true);
+					// session.setAttribute(ATTRIBUTE_ID_USER,
+					// userFromDataSource.getId());
+					// session.setAttribute(ATTRIBUTE_LOGIN,
+					// userFromDataSource.getLogin());
+					// session.setAttribute(ATTRIBUTE_PASSWORD,
+					// userFromDataSource.getPassword());
+					// session.setAttribute(ATTRIBUTE_ID_AUTHORITY_TYPE,
+					// userFromDataSource.getAuthorityType().getId());
 
 					HttpSession session = request.getSession(true);
 					session.setAttribute(ATTRIBUTE_ID_USER, userFromDataSource);
-					
+
 					/*--*/
 
 					return getPageByUserAuthorityType(userFromDataSource);
