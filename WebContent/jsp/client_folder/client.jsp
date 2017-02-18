@@ -8,12 +8,9 @@
 <body>
 	<h1>This is Client page!!!</h1>
 	<p>
-	<h2>Hello : "${login}"</h2>
+	<h2>Hello : "${idUser.login}"</h2>
 	<p>
-	<h2>Your id :"${idUser}"</h2>
-	<p>
-	<h2>Your password :"${password}"</h2>
-	<p>
-	<h2>Your authoruty type id :"${idAuthorityType}"</h2>
+	<h2>Your password : "${idUser.id}"</h2>
+
 </body>
 </html>

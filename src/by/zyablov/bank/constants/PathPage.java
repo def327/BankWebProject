@@ -22,5 +22,10 @@ public class PathPage {
 	 * A main page of the project.
 	 */
 	public static final String USER_MAIN_PAGE = "/jsp/main.jsp";
+	
+	/**
+	 * A page for user to registrate at the bank system.
+	 */
+	public static final String REGISTRY_FORM_PAGE = "/jsp/registry_folder/registry.jsp";
 
 }

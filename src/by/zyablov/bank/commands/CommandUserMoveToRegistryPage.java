@@ -1,6 +1,7 @@
 package by.zyablov.bank.commands;
 
 import javax.servlet.http.HttpServletRequest;
+import static by.zyablov.bank.constants.PathPage.REGISTRY_FORM_PAGE;
 
 /**
  * {@code CommandUserMoveToRegistryPage} provides methods to redirect user to
@@ -10,11 +11,6 @@ import javax.servlet.http.HttpServletRequest;
  *
  */
 public class CommandUserMoveToRegistryPage implements CommandBehavior {
-
-	/**
-	 * A page for user to registrate a the bank system.
-	 */
-	private static final String REGISTRY_FORM_PAGE = "/jsp/registry_folder/registry.jsp";
 
 	/**
 	 * Exceutes moving to registry page command.

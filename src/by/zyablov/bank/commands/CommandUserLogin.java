@@ -54,12 +54,15 @@ public class CommandUserLogin implements CommandBehavior {
 					// TODO set User object(login) in http request
 
 					/*--*/
-					HttpSession session = request.getSession(true);
-					session.setAttribute(ATTRIBUTE_ID_USER, userFromDataSource.getId());
-					session.setAttribute(ATTRIBUTE_LOGIN, userFromDataSource.getLogin());
-					session.setAttribute(ATTRIBUTE_PASSWORD, userFromDataSource.getPassword());
-					session.setAttribute(ATTRIBUTE_ID_AUTHORITY_TYPE, userFromDataSource.getAuthorityType().getId());
+//					HttpSession session = request.getSession(true);
+//					session.setAttribute(ATTRIBUTE_ID_USER, userFromDataSource.getId());
+//					session.setAttribute(ATTRIBUTE_LOGIN, userFromDataSource.getLogin());
+//					session.setAttribute(ATTRIBUTE_PASSWORD, userFromDataSource.getPassword());
+//					session.setAttribute(ATTRIBUTE_ID_AUTHORITY_TYPE, userFromDataSource.getAuthorityType().getId());
 
+					HttpSession session = request.getSession(true);
+					session.setAttribute(ATTRIBUTE_ID_USER, userFromDataSource);
+					
 					/*--*/
 
 					return getPageByUserAuthorityType(userFromDataSource);

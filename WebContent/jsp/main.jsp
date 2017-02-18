@@ -3,11 +3,57 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Onliner Bank</title>
+  <title>Web Bank</title>
+  <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+  <style>
+  .container {
+    padding-top: 10%;
+  }
+  </style>
 </head>
 <body>
-	<jsp:include page="login_view.jsp" />
-	<p>
-	<jsp:include page="registry_view.jsp"></jsp:include>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="row">
+          <h1 class="text-center">Welcome</h1>
+        </div>
+      </div>
+    </div>
+	<div class="row">
+      <div class="col-md-7 col-md-offset-3">
+		  <div class="row">
+			<div class="col-md-8">
+				<form class="form-horizontal" role="form" name="loginForm" method="POST" action="LoginController">	
+					<div class="form-group">
+					  <label for="login" class="col-sm-4 control-label">Login:</label>
+					  <div class="col-sm-7">
+						<input type="text" class="form-control" name="login" required>
+					  </div>
+					</div>
+					<div class="form-group">
+					  <label for="password" class="col-sm-4 control-label">Password :</label>
+					  <div class="col-sm-7">
+						<input type="password" class="form-control" name="password" required>
+					  </div>
+					</div>
+					<div class="form-group">
+					  <div class="col-sm-7 col-md-offset-4">
+						<button type="submit" class="btn btn-success btn-lg btn-block">Sign in</button>
+					  </div>
+					</div>
+				</form>
+				<form class="form-horizontal" role="form" name="regitryForm" method="POST" action="MoveToRegistryController">	
+					<div class="form-group">
+						<div class="col-sm-7 col-md-offset-4">
+							<button type="submit" class="btn btn-primary btn-lg btn-block">Sign up</button>
+						</div>
+					</div>
+				</form>	
+			</div>
+		 </div>
+		</div>
+	</div>
+  </div>
 </body>
 </html>
