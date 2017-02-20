@@ -1,7 +1,18 @@
 package by.zyablov.bank.commands.factory;
 
-import by.zyablov.bank.commands.*;
-
+import by.zyablov.bank.commands.CommandAdminBlockClient;
+import by.zyablov.bank.commands.CommandAdminShowProfile;
+import by.zyablov.bank.commands.CommandAdminUnblockClient;
+import by.zyablov.bank.commands.CommandBehavior;
+import by.zyablov.bank.commands.CommandClientAddMoney;
+import by.zyablov.bank.commands.CommandClientAddNewCreditCard;
+import by.zyablov.bank.commands.CommandClientCreateNewBankAccount;
+import by.zyablov.bank.commands.CommandClientCreateUserProfile;
+import by.zyablov.bank.commands.CommandClientSpendMoney;
+import by.zyablov.bank.commands.CommandUserClientRigisterNewUser;
+import by.zyablov.bank.commands.CommandUserLogin;
+import by.zyablov.bank.commands.CommandUserLogout;
+import by.zyablov.bank.commands.CommandUserMoveToRegistryPage;
 
 /**
  * Enum {@code CommandEnum} represents types of command to execute.
@@ -87,6 +98,7 @@ public enum CommandEnum {
 		{
 			this.command = new CommandUserClientRigisterNewUser();
 		}
+
 	};
 
 	/**

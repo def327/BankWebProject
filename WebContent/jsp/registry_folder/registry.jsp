@@ -5,14 +5,10 @@
 <head>
 <title>Registration blank</title>
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-<style>
-.container {
-	width: 940px;
-	.
-	center-block
-	();
-}
-</style>
+
+<script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script src="js/repeat_password.js" type="text/javascript"></script>
+<script src="js/check_login_ajax.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="container">
@@ -32,8 +28,6 @@
 						class="form-control" name="lastName" placeholder="Jonson"
 						pattern="[A-Z][a-z]{3,}" maxlength="14" required />
 				</div>
-
-
 				<div class="form-group">
 					<label for="email">Email:</label> <input type="email"
 						class="form-control" name="email" placeholder="john98@gmail.com"
@@ -45,28 +39,22 @@
 						placeholder="MP2346421" pattern="[A-Z][A-Z][0-9]{7}" maxlength="9"
 						required />
 				</div>
-
-
-
 				<div class="form-group">
 					<label for="login">Login:</label> <input type="text"
 						class="form-control" name="login" pattern="^[a-z0-9_-]{3,9}$"
-						maxlength="9" required />
+						maxlength="9" id="loginInput" required />
 				</div>
 				<div class="form-group">
 					<label for="password">Password:</label> <input type="password"
-						class="form-control" name="password" maxlength="10" required />
+						class="form-control" name="password" maxlength="10"
+						id="userPassword" required />
 				</div>
 				<div class="form-group">
 					<label for="retypePassword">Retype Password :</label> <input
 						type="password" class="form-control" name="retypePassword"
-						maxlength="10" required />
+						maxlength="10" id="userRepeatPassword" required />
 				</div>
-
 				<button type="submit" class="btn btn-success">Submit</button>
-
-
-
 			</form>
 		</div>
 	</div>

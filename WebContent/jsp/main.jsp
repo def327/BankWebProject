@@ -9,6 +9,10 @@
 .container {
 	padding-top: 10%;
 }
+
+input:required:valid {
+	border-color: green;
+}
 </style>
 </head>
 <body>

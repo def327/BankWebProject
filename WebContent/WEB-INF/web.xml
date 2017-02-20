@@ -42,7 +42,6 @@
 		<dispatcher>INCLUDE</dispatcher>
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
-	
 	<servlet>
 		<servlet-name>LoginController</servlet-name>
 		<servlet-class>by.zyablov.bank.controllers.LoginController</servlet-class>
@@ -52,7 +51,6 @@
 		<servlet-name>LoginController</servlet-name>
 		<url-pattern>/LoginController</url-pattern>
 	</servlet-mapping>
-
 	<servlet>
 		<servlet-name>MoveToRegistryController</servlet-name>
 		<servlet-class>by.zyablov.bank.controllers.MoveToRegistryController</servlet-class>
@@ -62,7 +60,6 @@
 		<servlet-name>MoveToRegistryController</servlet-name>
 		<url-pattern>/MoveToRegistryController</url-pattern>
 	</servlet-mapping>
-
 	<servlet>
 		<servlet-name>SignUpController</servlet-name>
 		<servlet-class>by.zyablov.bank.controllers.SignUpController</servlet-class>
@@ -72,5 +69,18 @@
 		<servlet-name>SignUpController</servlet-name>
 		<url-pattern>/SignUpController</url-pattern>
 	</servlet-mapping>
-	
+
+
+	<servlet>
+		<servlet-name>CheckNewLoginExistenceController</servlet-name>
+		<servlet-class>by.zyablov.bank.controllers.CheckNewLoginExistenceController</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CheckNewLoginExistenceController</servlet-name>
+		<url-pattern>/CheckNewLoginExistenceController</url-pattern>
+	</servlet-mapping>
+
+
+
 </web-app>
