@@ -21,12 +21,12 @@
 				<div class="form-group">
 					<label for="firstName">First name:</label> <input type="text"
 						class="form-control" name="firstName" placeholder="John"
-						pattern="[A-Z][a-z]{3,}" maxlength="14" required />
+						pattern="[A-Z](([a-z]){3,17})" maxlength="14" required />
 				</div>
 				<div class="form-group">
 					<label for="lastName">Last name:</label> <input type="text"
 						class="form-control" name="lastName" placeholder="Jonson"
-						pattern="[A-Z][a-z]{3,}" maxlength="14" required />
+						pattern="[A-Z](([a-z]){3,17})" maxlength="14" required />
 				</div>
 				<div class="form-group">
 					<label for="email">Email:</label> <input type="email"
