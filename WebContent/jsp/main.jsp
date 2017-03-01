@@ -5,15 +5,6 @@
 <head>
 <title>Web Bank</title>
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-<style>
-.container {
-	padding-top: 10%;
-}
-
-input:required:valid {
-	border-color: green;
-}
-</style>
 </head>
 <body>
 	<div class="container">

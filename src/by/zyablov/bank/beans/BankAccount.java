@@ -19,7 +19,7 @@ public class BankAccount extends Entity {
 	/**
 	 * A list of {@code CreditCard} objects with credit cards information data.
 	 */
-	private List<CreditCard> listOfCreditCards;
+	private List<Book> listOfCreditCards;
 
 	/**
 	 * A status type of bank account state.
@@ -41,7 +41,7 @@ public class BankAccount extends Entity {
 	/**
 	 * @return the listOfCreditCards
 	 */
-	public List<CreditCard> getListOfCreditCards() {
+	public List<Book> getListOfCreditCards() {
 		return listOfCreditCards;
 	}
 
@@ -49,7 +49,7 @@ public class BankAccount extends Entity {
 	 * @param listOfCreditCards
 	 *            the listOfCreditCards to set
 	 */
-	public void setListOfCreditCards(List<CreditCard> listOfCreditCards) {
+	public void setListOfCreditCards(List<Book> listOfCreditCards) {
 		this.listOfCreditCards = listOfCreditCards;
 	}
 

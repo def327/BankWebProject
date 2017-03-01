@@ -2,7 +2,7 @@ package by.zyablov.bank.dao.interfaces;
 
 import java.util.List;
 
-import by.zyablov.bank.beans.CreditCard;
+import by.zyablov.bank.beans.Book;
 import by.zyablov.bank.exceptions.DaoException;
 
 /**
@@ -11,7 +11,7 @@ import by.zyablov.bank.exceptions.DaoException;
  * 
  * @author Дмитрий
  * 
- * @see CreditCard
+ * @see Book
  */
 public interface DaoBehaviorCreditCard {
 
@@ -26,12 +26,12 @@ public interface DaoBehaviorCreditCard {
 	 * 
 	 * @throws DaoException
 	 */
-	List<CreditCard> getListOfCreditCard(int bankAccountId) throws DaoException;
+	List<Book> getListOfCreditCard(int bankAccountId) throws DaoException;
 
 	/**
 	 * Adds a {@code CreditCard} object to a datasource.
 	 * 
-	 * @param creditCard
+	 * @param book
 	 *            An {@code CreditCard} object to add
 	 * 
 	 * @param bankAccountId
@@ -39,6 +39,6 @@ public interface DaoBehaviorCreditCard {
 	 * 
 	 * @throws DaoException
 	 */
-	void addNewCreditCard(CreditCard creditCard, int bankAccountId) throws DaoException;
+	void addNewCreditCard(Book book, int bankAccountId) throws DaoException;
 
 }

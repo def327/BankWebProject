@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-import by.zyablov.bank.beans.CreditCard;
+import by.zyablov.bank.beans.Book;
 import by.zyablov.bank.beans.CreditCardType;
 import by.zyablov.bank.dao.interfaces.DaoBehaviorCreditCard;
 import by.zyablov.bank.datasource.DataBaseManager;
@@ -22,7 +22,7 @@ import by.zyablov.bank.exceptions.DaoException;
  * 
  * @author Дмитрий
  * 
- * @see CreditCard
+ * @see Book
  *
  */
 public class DaoCreditCard extends DaoAbstract implements DaoBehaviorCreditCard {
@@ -32,7 +32,7 @@ public class DaoCreditCard extends DaoAbstract implements DaoBehaviorCreditCard 
 	 * unique bank account ID.
 	 */
 	@Override
-	public List<CreditCard> getListOfCreditCard(int bankAccountId) throws DaoException {
+	public List<Book> getListOfCreditCard(int bankAccountId) throws DaoException {
 
 		/**
 		 * A position of unique ID of a {@code BankAccount} object in prepared
@@ -58,7 +58,7 @@ public class DaoCreditCard extends DaoAbstract implements DaoBehaviorCreditCard 
 		 */
 		final int ID_CARD_TYPE = 3;
 
-		List<CreditCard> listOfCreditCards = null;
+		List<Book> listOfCreditCards = null;
 
 		Connection connectionToDataBase = null;
 		PreparedStatement preparedStatement = null;
@@ -81,7 +81,7 @@ public class DaoCreditCard extends DaoAbstract implements DaoBehaviorCreditCard 
 
 				do {
 
-					CreditCard creditCardObjectFromDataBase = new CreditCard();
+					Book creditCardObjectFromDataBase = new Book();
 
 					creditCardObjectFromDataBase.setId(result.getInt(ID_CREDIT_CARD));
 
@@ -144,7 +144,7 @@ public class DaoCreditCard extends DaoAbstract implements DaoBehaviorCreditCard 
 	 * Adds a new {@code CreditCard} object to a database.
 	 */
 	@Override
-	public void addNewCreditCard(CreditCard creditCard, int bankAccountId) throws DaoException {
+	public void addNewCreditCard(Book book, int bankAccountId) throws DaoException {
 
 		/**
 		 * A position of unique card number for a {@code CreditCard} object in
@@ -175,9 +175,9 @@ public class DaoCreditCard extends DaoAbstract implements DaoBehaviorCreditCard 
 			preparedStatement = connectionToDataBase
 					.prepareStatement(super.managerSQL.getPreparedSqlRequest(ManagerSQL.SQL_ADD_NEW_CREDIT_CARD));
 
-			preparedStatement.setString(QUERY_POSITION_UNIQUE_CARD_NUMBER, creditCard.getUniqueCardNumber());
+			preparedStatement.setString(QUERY_POSITION_UNIQUE_CARD_NUMBER, book.getUniqueCardNumber());
 			preparedStatement.setInt(QUERY_POSITION_ID_BANK_ACCOUNT, bankAccountId);
-			preparedStatement.setInt(QUERY_POSITION_ID_CARD_TYPE, creditCard.getCardtype().getId());
+			preparedStatement.setInt(QUERY_POSITION_ID_CARD_TYPE, book.getCardtype().getId());
 
 			preparedStatement.executeUpdate();
 

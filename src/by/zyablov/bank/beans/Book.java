@@ -10,7 +10,7 @@ package by.zyablov.bank.beans;
  * @see BankAccount
  * @see Entity
  */
-public class CreditCard extends Entity {
+public class Book extends Entity {
 
 	private static final long serialVersionUID = 2866230038578315409L;
 
@@ -28,7 +28,7 @@ public class CreditCard extends Entity {
 	/**
 	 * Constructs a default <code>CreditCard</code>.
 	 */
-	public CreditCard() {
+	public Book() {
 	}
 
 	/**

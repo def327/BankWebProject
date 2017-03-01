@@ -5,7 +5,7 @@ package by.zyablov.bank.beans;
  * 
  * @author Дмитрий
  * 
- * @see CreditCard
+ * @see Book
  * @see Entity
  */
 public class CreditCardType extends Entity {

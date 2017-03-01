@@ -1,6 +1,6 @@
 package by.zyablov.bank.dao;
 
-import by.zyablov.bank.datasource.DataBaseManager;
+import by.zyablov.bank.datasource.DataBaseManagerTomcat;
 import by.zyablov.bank.datasource.DataSourceBehavior;
 import by.zyablov.bank.datasource.tools.ManagerSQL;
 import by.zyablov.bank.datasource.tools.ManagerSQLBehavior;
@@ -30,7 +30,7 @@ public abstract class DaoAbstract {
 	 * datasource and SQL-request manager.
 	 */
 	public DaoAbstract() {
-		this.dataSource = DataBaseManager.getInstance();
+		this.dataSource = DataBaseManagerTomcat.getInstance();
 		this.managerSQL = ManagerSQL.getInstance();
 	}
 
